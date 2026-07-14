@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>义务教育教科书 日语 八年级 全一册 - PDF 第 88 页</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --page-w: 521.575;
+      --page-h: 737.00808;
+      --ink: #2a241a;
+      --accent: #e00000;
+    }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background: #efe8d8;
+      color: var(--ink);
+      font-family: "Songti SC", "Noto Serif CJK SC", serif;
+      overflow: hidden;
+    }
+    .app {
+      width: 100vw;
+      height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 12px;
+      overflow: hidden;
+    }
+    .stage {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e6dcc9, #f7f1e5);
+      border: 1px solid rgba(82, 63, 34, 0.16);
+      border-radius: 16px;
+    }
+    .page-scale {
+      position: relative;
+      width: min(calc(100vw - 24px), calc((100dvh - 24px) * var(--page-w) / var(--page-h)));
+      aspect-ratio: var(--page-w) / var(--page-h);
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(42, 32, 18, 0.24);
+    }
+    .page-native {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: calc(var(--page-w) * 1px);
+      height: calc(var(--page-h) * 1px);
+      transform-origin: 0 0;
+    }
+    .page-native > canvas, .text-layer, .overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .page-canvas { z-index: 1; }
+    .text-layer {
+      z-index: 2;
+      pointer-events: none;
+      transform-origin: 0 0;
+    }
+    .pdf-char {
+      position: absolute;
+      display: block;
+      white-space: pre;
+      line-height: 1;
+      overflow: visible;
+      transform-origin: left top;
+    }
+    .image-backed .pdf-char { opacity: 0 !important; }
+    .pdf-char.active { color: var(--accent) !important; opacity: 1 !important; }
+    .overlay { z-index: 3; }
+    .point-hotspot {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hit {
+      position: absolute;
+      background: transparent;
+      cursor: pointer;
+      pointer-events: all;
+    }
+    .point-hotspot:hover .hit { background: transparent; }
+    .tape-btn {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #e06000;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 5;
+      padding: 0;
+      box-shadow: 0 2px 6px rgba(224, 96, 0, 0.4);
+      transition: all 0.2s ease;
+      pointer-events: all;
+    }
+    .tape-btn:hover {
+      background: #f07010;
+      transform: scale(1.1);
+    }
+    .tape-btn.active {
+      background: #e00000;
+      box-shadow: 0 0 10px rgba(224, 0, 0, 0.6);
+      animation: pulse 1.2s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+    .nav, aside {
+      position: fixed;
+      z-index: 10;
+      background: rgba(255, 252, 244, 0.92);
+      border: 1px solid rgba(82, 63, 34, 0.16);
+      border-radius: 14px;
+      box-shadow: 0 14px 36px rgba(42, 32, 18, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      left: 16px;
+      top: 16px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px;
+    }
+    .nav a, .panel-toggle, button[data-target], .voice-picker select {
+      border-radius: 8px;
+      border: 1px solid transparent;
+      color: #3a2d1f;
+      font: inherit;
+      text-decoration: none;
+    }
+    .nav a {
+      display: inline-block;
+      padding: 8px 10px;
+      background: #fffaf0;
+    }
+    .nav a.disabled {
+      color: #a79b8c;
+      pointer-events: none;
+    }
+    .nav strong { padding: 0 4px; font-size: 14px; }
+    .voice-picker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding-left: 4px;
+      color: #6b6255;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .voice-picker select {
+      padding: 7px 26px 7px 8px;
+      background: #fffaf0;
+      cursor: pointer;
+    }
+    aside {
+      right: 16px;
+      top: 16px;
+      width: min(380px, calc(100vw - 32px));
+      max-height: calc(100dvh - 32px);
+      overflow: hidden;
+      padding: 16px;
+    }
+    aside:not(.open) {
+      width: auto;
+      padding: 0;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .panel-toggle {
+      width: auto;
+      padding: 9px 12px;
+      background: rgba(255, 252, 244, 0.94);
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(42, 32, 18, 0.18);
+    }
+    aside.open .panel-toggle {
+      margin-bottom: 12px;
+      box-shadow: none;
+    }
+    aside:not(.open) .panel-content { display: none; }
+    .panel-content {
+      max-height: calc(100dvh - 100px);
+      overflow: auto;
+    }
+    h1 { margin: 0 0 8px; font-size: 19px; }
+    .meta { margin: 0 0 14px; color: #6b6255; font-size: 13px; line-height: 1.5; }
+    ol { margin: 0; padding-left: 22px; }
+    li { margin: 0 0 8px; }
+    button[data-target] {
+      width: 100%;
+      padding: 7px 8px;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+    }
+    button[data-target] b {
+      display: inline-block;
+      min-width: 1.7em;
+      color: #8a5b22;
+    }
+    .audio-badge {
+      float: right;
+      margin-left: 8px;
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #5f503f;
+      background: #eadfcd;
+    }
+    .audio-badge.source {
+      color: #1f5f3c;
+      background: #dcebdc;
+    }
+    .audio-badge.pending {
+      color: #704915;
+      background: #f3dfbd;
+    }
+    button:hover, .nav a:hover { background: #f4ead8; }
+    button.active {
+      color: var(--accent);
+      background: rgba(224, 0, 0, 0.08);
+      border-color: rgba(224, 0, 0, 0.24);
+    }
+    @media (max-width: 900px) {
+      .app { padding: 8px; }
+      .stage { border-radius: 12px; }
+      .page-scale {
+        width: min(calc(100vw - 16px), calc((100dvh - 16px) * var(--page-w) / var(--page-h)));
+      }
+      .nav {
+        left: 10px;
+        top: 10px;
+      }
+      aside {
+        right: 10px;
+        top: 58px;
+        max-height: calc(100dvh - 68px);
+      }
+      .panel-content { max-height: calc(100dvh - 136px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <nav class="nav" aria-label="page navigation">
+      <a href="page-087.html" class="">上一页</a>
+      <a href="index.html">目录</a>
+      <strong>88/266</strong>
+      <a href="page-089.html" class="">下一页</a>
+    </nav>
+    <main class="stage" aria-label="PDF page 88">
+      <div class="page-scale">
+        <div class="page-native" id="page-native">
+          <canvas class="page-canvas" id="page-canvas" aria-hidden="true"></canvas>
+          <div class="text-layer" aria-hidden="true">
+            <span id="c00001" class="pdf-char" style='left:496.789px;top:216.806px;width:10.000px;height:10.000px;font-size:10.000px;color:#ffffff;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>第</span>
+<span id="c00002" class="pdf-char" style='left:496.789px;top:226.796px;width:10.000px;height:10.000px;font-size:10.000px;color:#ffffff;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>二</span>
+<span id="c00003" class="pdf-char" style='left:496.789px;top:236.806px;width:10.000px;height:10.000px;font-size:10.000px;color:#ffffff;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>单</span>
+<span id="c00004" class="pdf-char" style='left:496.789px;top:246.796px;width:10.000px;height:10.000px;font-size:10.000px;color:#ffffff;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>元</span>
+<span id="c00005" class="pdf-char" style='left:422.861px;top:680.449px;width:9.000px;height:9.000px;font-size:9.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>第</span>
+<span id="c00006" class="pdf-char" style='left:431.861px;top:680.449px;width:4.500px;height:9.000px;font-size:9.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00007" class="pdf-char" style='left:433.364px;top:680.449px;width:4.500px;height:9.000px;font-size:9.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>6</span>
+<span id="c00008" class="pdf-char" style='left:437.864px;top:680.449px;width:4.500px;height:9.000px;font-size:9.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00009" class="pdf-char" style='left:439.367px;top:680.449px;width:9.000px;height:9.000px;font-size:9.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>課</span>
+<span id="c00010" class="pdf-char" style='left:448.361px;top:678.622px;width:3.324px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00011" class="pdf-char" style='left:451.685px;top:678.622px;width:8.676px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00012" class="pdf-char" style='left:460.361px;top:678.622px;width:3.324px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00013" class="pdf-char" style='left:463.685px;top:678.622px;width:8.677px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00014" class="pdf-char" style='left:472.362px;top:678.622px;width:3.324px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00015" class="pdf-char" style='left:475.686px;top:678.622px;width:2.675px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00016" class="pdf-char" style='left:478.361px;top:678.622px;width:6.660px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>8</span>
+<span id="c00017" class="pdf-char" style='left:485.017px;top:678.622px;width:6.660px;height:13.644px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>1</span>
+<span id="c00018" class="pdf-char" style='left:67.732px;top:230.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>1</span>
+<span id="c00019" class="pdf-char" style='left:72.982px;top:230.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>.</span>
+<span id="c00020" class="pdf-char" style='left:79.545px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>生</span>
+<span id="c00021" class="pdf-char" style='left:89.520px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>徒</span>
+<span id="c00022" class="pdf-char" style='left:99.495px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00023" class="pdf-char" style='left:109.470px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ち</span>
+<span id="c00024" class="pdf-char" style='left:119.445px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>は</span>
+<span id="c00025" class="pdf-char" style='left:129.420px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>そ</span>
+<span id="c00026" class="pdf-char" style='left:139.395px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>れ</span>
+<span id="c00027" class="pdf-char" style='left:149.370px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ぞ</span>
+<span id="c00028" class="pdf-char" style='left:159.345px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>れ</span>
+<span id="c00029" class="pdf-char" style='left:169.320px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ど</span>
+<span id="c00030" class="pdf-char" style='left:179.295px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00031" class="pdf-char" style='left:189.270px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>歴</span>
+<span id="c00032" class="pdf-char" style='left:199.245px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>史</span>
+<span id="c00033" class="pdf-char" style='left:209.220px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>人</span>
+<span id="c00034" class="pdf-char" style='left:219.195px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>物</span>
+<span id="c00035" class="pdf-char" style='left:229.170px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00036" class="pdf-char" style='left:239.145px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>こ</span>
+<span id="c00037" class="pdf-char" style='left:249.120px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00038" class="pdf-char" style='left:259.095px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00039" class="pdf-char" style='left:269.070px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>紹</span>
+<span id="c00040" class="pdf-char" style='left:279.045px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>介</span>
+<span id="c00041" class="pdf-char" style='left:289.020px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00042" class="pdf-char" style='left:298.995px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00043" class="pdf-char" style='left:308.970px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00044" class="pdf-char" style='left:318.945px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>か</span>
+<span id="c00045" class="pdf-char" style='left:328.920px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00046" class="pdf-char" style='left:338.895px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>線</span>
+<span id="c00047" class="pdf-char" style='left:348.870px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00048" class="pdf-char" style='left:358.845px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>結</span>
+<span id="c00049" class="pdf-char" style='left:368.820px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>び</span>
+<span id="c00050" class="pdf-char" style='left:378.795px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00051" class="pdf-char" style='left:388.770px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00052" class="pdf-char" style='left:398.745px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ょ</span>
+<span id="c00053" class="pdf-char" style='left:408.720px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>う</span>
+<span id="c00054" class="pdf-char" style='left:418.695px;top:230.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00055" class="pdf-char" style='left:157.728px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>中</span>
+<span id="c00056" class="pdf-char" style='left:168.228px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>山</span>
+<span id="c00057" class="pdf-char" style='left:178.728px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>千</span>
+<span id="c00058" class="pdf-char" style='left:189.228px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>明</span>
+<span id="c00059" class="pdf-char" style='left:199.728px;top:251.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00060" class="pdf-char" style='left:204.982px;top:254.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00061" class="pdf-char" style='left:210.101px;top:251.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00062" class="pdf-char" style='left:220.601px;top:251.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00063" class="pdf-char" style='left:231.101px;top:251.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00064" class="pdf-char" style='left:241.601px;top:251.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00065" class="pdf-char" style='left:252.101px;top:251.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00066" class="pdf-char" style='left:262.601px;top:254.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00067" class="pdf-char" style='left:267.720px;top:254.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00068" class="pdf-char" style='left:270.214px;top:254.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00069" class="pdf-char" style='left:272.707px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>阿</span>
+<span id="c00070" class="pdf-char" style='left:283.207px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>倍</span>
+<span id="c00071" class="pdf-char" style='left:293.707px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>仲</span>
+<span id="c00072" class="pdf-char" style='left:304.207px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>麻</span>
+<span id="c00073" class="pdf-char" style='left:314.707px;top:251.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>呂</span>
+<span id="c00074" class="pdf-char" style='left:157.732px;top:272.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>張</span>
+<span id="c00075" class="pdf-char" style='left:168.232px;top:272.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>文</span>
+<span id="c00076" class="pdf-char" style='left:178.732px;top:272.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>浩</span>
+<span id="c00077" class="pdf-char" style='left:189.232px;top:272.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>　</span>
+<span id="c00078" class="pdf-char" style='left:199.732px;top:272.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00079" class="pdf-char" style='left:204.982px;top:275.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00080" class="pdf-char" style='left:210.101px;top:272.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00081" class="pdf-char" style='left:220.601px;top:272.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00082" class="pdf-char" style='left:231.101px;top:272.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00083" class="pdf-char" style='left:241.601px;top:272.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00084" class="pdf-char" style='left:252.101px;top:272.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00085" class="pdf-char" style='left:262.601px;top:275.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00086" class="pdf-char" style='left:267.720px;top:275.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00087" class="pdf-char" style='left:270.214px;top:275.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00088" class="pdf-char" style='left:272.707px;top:272.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>栄</span>
+<span id="c00089" class="pdf-char" style='left:283.207px;top:272.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>西</span>
+<span id="c00090" class="pdf-char" style='left:157.732px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>高</span>
+<span id="c00091" class="pdf-char" style='left:168.232px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>橋</span>
+<span id="c00092" class="pdf-char" style='left:178.732px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>宏</span>
+<span id="c00093" class="pdf-char" style='left:189.232px;top:293.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00094" class="pdf-char" style='left:194.482px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>　</span>
+<span id="c00095" class="pdf-char" style='left:204.982px;top:296.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00096" class="pdf-char" style='left:210.101px;top:293.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00097" class="pdf-char" style='left:220.601px;top:293.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00098" class="pdf-char" style='left:231.101px;top:293.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00099" class="pdf-char" style='left:241.601px;top:293.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00100" class="pdf-char" style='left:252.101px;top:293.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00101" class="pdf-char" style='left:262.601px;top:296.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00102" class="pdf-char" style='left:267.720px;top:296.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00103" class="pdf-char" style='left:270.214px;top:296.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00104" class="pdf-char" style='left:272.707px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>白</span>
+<span id="c00105" class="pdf-char" style='left:283.207px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>楽</span>
+<span id="c00106" class="pdf-char" style='left:293.707px;top:293.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>天</span>
+<span id="c00107" class="pdf-char" style='left:157.732px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>李</span>
+<span id="c00108" class="pdf-char" style='left:168.232px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>悠</span>
+<span id="c00109" class="pdf-char" style='left:178.732px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>然</span>
+<span id="c00110" class="pdf-char" style='left:189.232px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>　</span>
+<span id="c00111" class="pdf-char" style='left:199.732px;top:314.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00112" class="pdf-char" style='left:204.982px;top:317.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00113" class="pdf-char" style='left:210.101px;top:314.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00114" class="pdf-char" style='left:220.601px;top:314.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00115" class="pdf-char" style='left:231.101px;top:314.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00116" class="pdf-char" style='left:241.601px;top:314.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00117" class="pdf-char" style='left:252.101px;top:314.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00118" class="pdf-char" style='left:262.601px;top:317.152px;width:5.250px;height:6.174px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>●</span>
+<span id="c00119" class="pdf-char" style='left:267.720px;top:317.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00120" class="pdf-char" style='left:270.214px;top:317.302px;width:2.625px;height:5.250px;font-size:5.250px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00121" class="pdf-char" style='left:272.707px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>李</span>
+<span id="c00122" class="pdf-char" style='left:283.207px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>時</span>
+<span id="c00123" class="pdf-char" style='left:293.707px;top:314.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>珍</span>
+<span id="c00124" class="pdf-char" style='left:67.737px;top:356.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>2</span>
+<span id="c00125" class="pdf-char" style='left:72.987px;top:356.660px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>.</span>
+<span id="c00126" class="pdf-char" style='left:79.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>そ</span>
+<span id="c00127" class="pdf-char" style='left:90.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>れ</span>
+<span id="c00128" class="pdf-char" style='left:100.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ぞ</span>
+<span id="c00129" class="pdf-char" style='left:111.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>れ</span>
+<span id="c00130" class="pdf-char" style='left:121.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00131" class="pdf-char" style='left:132.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>歴</span>
+<span id="c00132" class="pdf-char" style='left:142.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>史</span>
+<span id="c00133" class="pdf-char" style='left:153.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>人</span>
+<span id="c00134" class="pdf-char" style='left:163.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>物</span>
+<span id="c00135" class="pdf-char" style='left:174.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00136" class="pdf-char" style='left:184.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00137" class="pdf-char" style='left:195.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>き</span>
+<span id="c00138" class="pdf-char" style='left:205.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ご</span>
+<span id="c00139" class="pdf-char" style='left:216.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00140" class="pdf-char" style='left:226.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>や</span>
+<span id="c00141" class="pdf-char" style='left:237.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>功</span>
+<span id="c00142" class="pdf-char" style='left:247.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>績</span>
+<span id="c00143" class="pdf-char" style='left:258.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00144" class="pdf-char" style='left:268.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00145" class="pdf-char" style='left:279.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00146" class="pdf-char" style='left:289.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>め</span>
+<span id="c00147" class="pdf-char" style='left:300.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>て</span>
+<span id="c00148" class="pdf-char" style='left:310.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>書</span>
+<span id="c00149" class="pdf-char" style='left:321.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>き</span>
+<span id="c00150" class="pdf-char" style='left:331.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00151" class="pdf-char" style='left:342.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00152" class="pdf-char" style='left:352.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ょ</span>
+<span id="c00153" class="pdf-char" style='left:363.049px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>う</span>
+<span id="c00154" class="pdf-char" style='left:373.549px;top:356.660px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00155" class="pdf-char" style='left:67.736px;top:397.663px;width:5.250px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00156" class="pdf-char" style='left:67.736px;top:433.667px;width:5.250px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00157" class="pdf-char" style='left:67.736px;top:469.672px;width:5.250px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00158" class="pdf-char" style='left:67.736px;top:505.676px;width:5.250px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00159" class="pdf-char" style='left:67.736px;top:598.675px;width:5.250px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>3</span>
+<span id="c00160" class="pdf-char" style='left:72.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>．</span>
+<span id="c00161" class="pdf-char" style='left:83.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>録</span>
+<span id="c00162" class="pdf-char" style='left:93.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>音</span>
+<span id="c00163" class="pdf-char" style='left:104.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00164" class="pdf-char" style='left:114.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>聞</span>
+<span id="c00165" class="pdf-char" style='left:125.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>い</span>
+<span id="c00166" class="pdf-char" style='left:135.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>て</span>
+<span id="c00167" class="pdf-char" style='left:146.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>、</span>
+<span id="c00168" class="pdf-char" style='left:156.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>役</span>
+<span id="c00169" class="pdf-char" style='left:167.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00170" class="pdf-char" style='left:177.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>決</span>
+<span id="c00171" class="pdf-char" style='left:188.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>め</span>
+<span id="c00172" class="pdf-char" style='left:198.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>て</span>
+<span id="c00173" class="pdf-char" style='left:209.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>読</span>
+<span id="c00174" class="pdf-char" style='left:219.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>み</span>
+<span id="c00175" class="pdf-char" style='left:230.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00176" class="pdf-char" style='left:240.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00177" class="pdf-char" style='left:251.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ょ</span>
+<span id="c00178" class="pdf-char" style='left:261.986px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>う</span>
+<span id="c00179" class="pdf-char" style='left:272.486px;top:598.675px;width:10.500px;height:10.500px;font-size:10.500px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00180" class="pdf-char" style='left:109.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00181" class="pdf-char" style='left:121.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00182" class="pdf-char" style='left:133.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00183" class="pdf-char" style='left:145.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00184" class="pdf-char" style='left:157.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>そ</span>
+<span id="c00185" class="pdf-char" style='left:169.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00186" class="pdf-char" style='left:181.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>て</span>
+<span id="c00187" class="pdf-char" style='left:193.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>、</span>
+<span id="c00188" class="pdf-char" style='left:205.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ふ</span>
+<span id="c00189" class="pdf-char" style='left:217.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>る</span>
+<span id="c00190" class="pdf-char" style='left:229.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>さ</span>
+<span id="c00191" class="pdf-char" style='left:241.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00192" class="pdf-char" style='left:253.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>へ</span>
+<span id="c00193" class="pdf-char" style='left:265.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00194" class="pdf-char" style='left:277.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>思</span>
+<span id="c00195" class="pdf-char" style='left:289.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>い</span>
+<span id="c00196" class="pdf-char" style='left:301.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00197" class="pdf-char" style='left:313.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>詩</span>
+<span id="c00198" class="pdf-char" style='left:325.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>に</span>
+<span id="c00199" class="pdf-char" style='left:337.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00200" class="pdf-char" style='left:349.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00201" class="pdf-char" style='left:361.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00202" class="pdf-char" style='left:373.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00203" class="pdf-char" style='left:385.016px;top:56.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00204" class="pdf-char" style='left:68.012px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>李</span>
+<span id="c00205" class="pdf-char" style='left:80.012px;top:80.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'> </span>
+<span id="c00206" class="pdf-char" style='left:86.012px;top:80.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00207" class="pdf-char" style='left:89.012px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>：</span>
+<span id="c00208" class="pdf-char" style='left:98.012px;top:80.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00209" class="pdf-char" style='left:104.012px;top:80.770px;width:5.004px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00210" class="pdf-char" style='left:109.016px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>そ</span>
+<span id="c00211" class="pdf-char" style='left:121.280px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>う</span>
+<span id="c00212" class="pdf-char" style='left:133.544px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00213" class="pdf-char" style='left:145.808px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00214" class="pdf-char" style='left:158.072px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>か</span>
+<span id="c00215" class="pdf-char" style='left:170.072px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00216" class="pdf-char" style='left:182.336px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>わ</span>
+<span id="c00217" class="pdf-char" style='left:194.600px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00218" class="pdf-char" style='left:206.864px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00219" class="pdf-char" style='left:219.128px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>は</span>
+<span id="c00220" class="pdf-char" style='left:231.392px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>阿</span>
+<span id="c00221" class="pdf-char" style='left:243.656px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>倍</span>
+<span id="c00222" class="pdf-char" style='left:255.920px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>仲</span>
+<span id="c00223" class="pdf-char" style='left:268.184px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>麻</span>
+<span id="c00224" class="pdf-char" style='left:280.448px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>呂</span>
+<span id="c00225" class="pdf-char" style='left:292.712px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00226" class="pdf-char" style='left:304.976px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>こ</span>
+<span id="c00227" class="pdf-char" style='left:317.240px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00228" class="pdf-char" style='left:329.504px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00229" class="pdf-char" style='left:341.768px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>知</span>
+<span id="c00230" class="pdf-char" style='left:354.032px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>り</span>
+<span id="c00231" class="pdf-char" style='left:366.296px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00232" class="pdf-char" style='left:378.560px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>い</span>
+<span id="c00233" class="pdf-char" style='left:390.824px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00234" class="pdf-char" style='left:403.088px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00235" class="pdf-char" style='left:415.088px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00236" class="pdf-char" style='left:427.352px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>高</span>
+<span id="c00237" class="pdf-char" style='left:439.616px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>橋</span>
+<span id="c00238" class="pdf-char" style='left:451.880px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>さ</span>
+<span id="c00239" class="pdf-char" style='left:464.144px;top:80.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ん</span>
+<span id="c00240" class="pdf-char" style='left:109.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00241" class="pdf-char" style='left:121.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ポ</span>
+<span id="c00242" class="pdf-char" style='left:133.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ス</span>
+<span id="c00243" class="pdf-char" style='left:145.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>タ</span>
+<span id="c00244" class="pdf-char" style='left:157.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ー</span>
+<span id="c00245" class="pdf-char" style='left:169.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>が</span>
+<span id="c00246" class="pdf-char" style='left:181.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>楽</span>
+<span id="c00247" class="pdf-char" style='left:193.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00248" class="pdf-char" style='left:205.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>み</span>
+<span id="c00249" class="pdf-char" style='left:217.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00250" class="pdf-char" style='left:229.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00251" class="pdf-char" style='left:241.016px;top:104.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00252" class="pdf-char" style='left:68.012px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>高</span>
+<span id="c00253" class="pdf-char" style='left:80.012px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>橋</span>
+<span id="c00254" class="pdf-char" style='left:89.012px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>：</span>
+<span id="c00255" class="pdf-char" style='left:98.012px;top:128.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00256" class="pdf-char" style='left:104.012px;top:128.770px;width:5.004px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00257" class="pdf-char" style='left:109.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>頑</span>
+<span id="c00258" class="pdf-char" style='left:121.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>張</span>
+<span id="c00259" class="pdf-char" style='left:133.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>っ</span>
+<span id="c00260" class="pdf-char" style='left:145.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>て</span>
+<span id="c00261" class="pdf-char" style='left:157.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>作</span>
+<span id="c00262" class="pdf-char" style='left:169.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>り</span>
+<span id="c00263" class="pdf-char" style='left:181.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00264" class="pdf-char" style='left:193.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00265" class="pdf-char" style='left:205.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00266" class="pdf-char" style='left:217.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>李</span>
+<span id="c00267" class="pdf-char" style='left:229.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>さ</span>
+<span id="c00268" class="pdf-char" style='left:241.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ん</span>
+<span id="c00269" class="pdf-char" style='left:253.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>は</span>
+<span id="c00270" class="pdf-char" style='left:265.016px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>？</span>
+<span id="c00271" class="pdf-char" style='left:277.016px;top:128.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00272" class="pdf-char" style='left:284.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>誰</span>
+<span id="c00273" class="pdf-char" style='left:296.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00274" class="pdf-char" style='left:308.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>こ</span>
+<span id="c00275" class="pdf-char" style='left:320.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00276" class="pdf-char" style='left:332.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00277" class="pdf-char" style='left:344.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>紹</span>
+<span id="c00278" class="pdf-char" style='left:356.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>介</span>
+<span id="c00279" class="pdf-char" style='left:368.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00280" class="pdf-char" style='left:380.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ま</span>
+<span id="c00281" class="pdf-char" style='left:392.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00282" class="pdf-char" style='left:404.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>か</span>
+<span id="c00283" class="pdf-char" style='left:416.516px;top:128.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00284" class="pdf-char" style='left:68.012px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>李</span>
+<span id="c00285" class="pdf-char" style='left:80.012px;top:152.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'> </span>
+<span id="c00286" class="pdf-char" style='left:86.012px;top:152.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00287" class="pdf-char" style='left:89.012px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>：</span>
+<span id="c00288" class="pdf-char" style='left:98.012px;top:152.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00289" class="pdf-char" style='left:104.012px;top:152.770px;width:5.004px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'> </span>
+<span id="c00290" class="pdf-char" style='left:109.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>わ</span>
+<span id="c00291" class="pdf-char" style='left:121.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00292" class="pdf-char" style='left:133.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00293" class="pdf-char" style='left:145.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>は</span>
+<span id="c00294" class="pdf-char" style='left:157.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>古</span>
+<span id="c00295" class="pdf-char" style='left:169.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>代</span>
+<span id="c00296" class="pdf-char" style='left:181.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00297" class="pdf-char" style='left:193.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>医</span>
+<span id="c00298" class="pdf-char" style='left:205.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>学</span>
+<span id="c00299" class="pdf-char" style='left:217.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>者</span>
+<span id="c00300" class="pdf-char" style='left:229.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00301" class="pdf-char" style='left:241.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>李</span>
+<span id="c00302" class="pdf-char" style='left:253.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>時</span>
+<span id="c00303" class="pdf-char" style='left:265.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>珍</span>
+<span id="c00304" class="pdf-char" style='left:277.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00305" class="pdf-char" style='left:289.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>こ</span>
+<span id="c00306" class="pdf-char" style='left:301.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>と</span>
+<span id="c00307" class="pdf-char" style='left:313.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>を</span>
+<span id="c00308" class="pdf-char" style='left:325.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>紹</span>
+<span id="c00309" class="pdf-char" style='left:337.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>介</span>
+<span id="c00310" class="pdf-char" style='left:349.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>し</span>
+<span id="c00311" class="pdf-char" style='left:361.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>た</span>
+<span id="c00312" class="pdf-char" style='left:373.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>い</span>
+<span id="c00313" class="pdf-char" style='left:385.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00314" class="pdf-char" style='left:397.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00315" class="pdf-char" style='left:409.016px;top:152.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00316" class="pdf-char" style='left:68.012px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>高</span>
+<span id="c00317" class="pdf-char" style='left:80.012px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>橋</span>
+<span id="c00318" class="pdf-char" style='left:89.012px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>：</span>
+<span id="c00319" class="pdf-char" style='left:98.012px;top:176.770px;width:6.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>	</span>
+<span id="c00320" class="pdf-char" style='left:103.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>『</span>
+<span id="c00321" class="pdf-char" style='left:115.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>本</span>
+<span id="c00322" class="pdf-char" style='left:127.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>草</span>
+<span id="c00323" class="pdf-char" style='left:139.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>綱</span>
+<span id="c00324" class="pdf-char" style='left:151.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>目</span>
+<span id="c00325" class="pdf-char" style='left:163.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>』</span>
+<span id="c00326" class="pdf-char" style='left:175.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>の</span>
+<span id="c00327" class="pdf-char" style='left:187.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>作</span>
+<span id="c00328" class="pdf-char" style='left:199.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>者</span>
+<span id="c00329" class="pdf-char" style='left:211.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00330" class="pdf-char" style='left:223.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00331" class="pdf-char" style='left:235.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>ね</span>
+<span id="c00332" class="pdf-char" style='left:247.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00333" class="pdf-char" style='left:259.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>日</span>
+<span id="c00334" class="pdf-char" style='left:271.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>本</span>
+<span id="c00335" class="pdf-char" style='left:283.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00336" class="pdf-char" style='left:295.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>も</span>
+<span id="c00337" class="pdf-char" style='left:307.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>有</span>
+<span id="c00338" class="pdf-char" style='left:319.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>名</span>
+<span id="c00339" class="pdf-char" style='left:331.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>で</span>
+<span id="c00340" class="pdf-char" style='left:343.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>す</span>
+<span id="c00341" class="pdf-char" style='left:355.016px;top:176.770px;width:12.000px;height:12.000px;font-size:12.000px;color:#231f20;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>。</span>
+<span id="c00342" class="pdf-char" style='left:118.963px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>名</span>
+<span id="c00343" class="pdf-char" style='left:129.463px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>前</span>
+<span id="c00344" class="pdf-char" style='left:288.874px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>で</span>
+<span id="c00345" class="pdf-char" style='left:299.374px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>き</span>
+<span id="c00346" class="pdf-char" style='left:309.874px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>ご</span>
+<span id="c00347" class="pdf-char" style='left:320.374px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>と</span>
+<span id="c00348" class="pdf-char" style='left:330.874px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>や</span>
+<span id="c00349" class="pdf-char" style='left:341.374px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>功</span>
+<span id="c00350" class="pdf-char" style='left:351.874px;top:388.588px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;'>績</span>
+<span id="c00351" class="pdf-char" style='left:113.713px;top:423.238px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>白</span>
+<span id="c00352" class="pdf-char" style='left:124.213px;top:423.238px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>居</span>
+<span id="c00353" class="pdf-char" style='left:134.713px;top:423.238px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>易</span>
+<span id="c00354" class="pdf-char" style='left:118.963px;top:464.535px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>栄</span>
+<span id="c00355" class="pdf-char" style='left:129.463px;top:464.535px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>西</span>
+<span id="c00356" class="pdf-char" style='left:103.213px;top:505.831px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>阿</span>
+<span id="c00357" class="pdf-char" style='left:113.713px;top:505.831px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>倍</span>
+<span id="c00358" class="pdf-char" style='left:124.213px;top:505.831px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>仲</span>
+<span id="c00359" class="pdf-char" style='left:134.713px;top:505.831px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>麻</span>
+<span id="c00360" class="pdf-char" style='left:145.213px;top:505.831px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>呂</span>
+<span id="c00361" class="pdf-char" style='left:113.713px;top:547.128px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>李</span>
+<span id="c00362" class="pdf-char" style='left:124.213px;top:547.128px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>時</span>
+<span id="c00363" class="pdf-char" style='left:134.713px;top:547.128px;width:10.500px;height:10.500px;font-size:10.500px;color:#c63d96;opacity:1.000;font-family:"Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "Noto Serif CJK JP", serif;'>珍</span>
+          </div>
+          <div class="overlay" aria-label="pointread click layer">
+            <div class="point-hotspot sentence" data-target="h-001" data-char-ids="[&quot;c00184&quot;, &quot;c00185&quot;, &quot;c00186&quot;, &quot;c00187&quot;, &quot;c00188&quot;, &quot;c00189&quot;, &quot;c00190&quot;, &quot;c00191&quot;, &quot;c00192&quot;, &quot;c00193&quot;, &quot;c00194&quot;, &quot;c00195&quot;, &quot;c00196&quot;, &quot;c00197&quot;, &quot;c00198&quot;, &quot;c00199&quot;, &quot;c00200&quot;, &quot;c00201&quot;, &quot;c00202&quot;, &quot;c00203&quot;]" data-audio-id="c581c82a7e398d84"  title="そして、ふるさとへの思いを詩にしました。">
+  <div class="hit" style='left:154.016px;top:53.770px;width:246.000px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-002" data-char-ids="[&quot;c00210&quot;, &quot;c00211&quot;, &quot;c00212&quot;, &quot;c00213&quot;, &quot;c00214&quot;, &quot;c00215&quot;]" data-audio-id="a83577aa2b7f6409"  data-audio-src="audio/a83577aa2b7f6409.mp3" title="そうですか。">
+  <div class="hit" style='left:106.016px;top:77.770px;width:79.056px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-003" data-char-ids="[&quot;c00216&quot;, &quot;c00217&quot;, &quot;c00218&quot;, &quot;c00219&quot;, &quot;c00220&quot;, &quot;c00221&quot;, &quot;c00222&quot;, &quot;c00223&quot;, &quot;c00224&quot;, &quot;c00225&quot;, &quot;c00226&quot;, &quot;c00227&quot;, &quot;c00228&quot;, &quot;c00229&quot;, &quot;c00230&quot;, &quot;c00231&quot;, &quot;c00232&quot;, &quot;c00233&quot;, &quot;c00234&quot;, &quot;c00235&quot;]" data-audio-id="2cc29753b04b179c"  title="わたしは阿倍仲麻呂のことを知りたいです。">
+  <div class="hit" style='left:179.336px;top:77.770px;width:250.752px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-004" data-char-ids="[&quot;c00240&quot;, &quot;c00241&quot;, &quot;c00242&quot;, &quot;c00243&quot;, &quot;c00244&quot;, &quot;c00245&quot;, &quot;c00246&quot;, &quot;c00247&quot;, &quot;c00248&quot;, &quot;c00249&quot;, &quot;c00250&quot;, &quot;c00251&quot;]" data-audio-id="0c4056aee705bacb"  data-audio-src="audio/0c4056aee705bacb.mp3" title="のポスターが楽しみです。">
+  <div class="hit" style='left:106.016px;top:101.770px;width:150.000px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-005" data-char-ids="[&quot;c00257&quot;, &quot;c00258&quot;, &quot;c00259&quot;, &quot;c00260&quot;, &quot;c00261&quot;, &quot;c00262&quot;, &quot;c00263&quot;, &quot;c00264&quot;, &quot;c00265&quot;]" data-audio-id="181578dbfe900daa"  data-audio-src="audio/181578dbfe900daa.mp3" title="頑張って作ります。">
+  <div class="hit" style='left:106.016px;top:125.770px;width:114.000px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-006" data-char-ids="[&quot;c00266&quot;, &quot;c00267&quot;, &quot;c00268&quot;, &quot;c00269&quot;, &quot;c00270&quot;]" data-audio-id="10da09779e62883d"  title="李さんは？">
+  <div class="hit" style='left:214.016px;top:125.770px;width:66.000px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-007" data-char-ids="[&quot;c00272&quot;, &quot;c00273&quot;, &quot;c00274&quot;, &quot;c00275&quot;, &quot;c00276&quot;, &quot;c00277&quot;, &quot;c00278&quot;, &quot;c00279&quot;, &quot;c00280&quot;, &quot;c00281&quot;, &quot;c00282&quot;, &quot;c00283&quot;]" data-audio-id="b23c0f243f59d01c"  data-audio-src="audio/b23c0f243f59d01c.mp3" title="誰のことを紹介しますか。">
+  <div class="hit" style='left:281.516px;top:125.770px;width:150.000px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-008" data-char-ids="[&quot;c00290&quot;, &quot;c00291&quot;, &quot;c00292&quot;, &quot;c00293&quot;, &quot;c00294&quot;, &quot;c00295&quot;, &quot;c00296&quot;, &quot;c00297&quot;, &quot;c00298&quot;, &quot;c00299&quot;, &quot;c00300&quot;, &quot;c00301&quot;, &quot;c00302&quot;, &quot;c00303&quot;, &quot;c00304&quot;, &quot;c00305&quot;, &quot;c00306&quot;, &quot;c00307&quot;, &quot;c00308&quot;, &quot;c00309&quot;, &quot;c00310&quot;, &quot;c00311&quot;, &quot;c00312&quot;, &quot;c00313&quot;, &quot;c00314&quot;, &quot;c00315&quot;]" data-audio-id="537573ddec348b61"  title="わたしは古代の医学者の李時珍のことを紹介したいです。">
+  <div class="hit" style='left:106.016px;top:149.770px;width:318.000px;height:18.000px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-009" data-char-ids="[&quot;c00020&quot;, &quot;c00021&quot;, &quot;c00022&quot;, &quot;c00023&quot;, &quot;c00024&quot;, &quot;c00025&quot;, &quot;c00026&quot;, &quot;c00027&quot;, &quot;c00028&quot;, &quot;c00029&quot;, &quot;c00030&quot;, &quot;c00031&quot;, &quot;c00032&quot;, &quot;c00033&quot;, &quot;c00034&quot;, &quot;c00035&quot;, &quot;c00036&quot;, &quot;c00037&quot;, &quot;c00038&quot;, &quot;c00039&quot;, &quot;c00040&quot;, &quot;c00041&quot;, &quot;c00042&quot;, &quot;c00043&quot;, &quot;c00044&quot;, &quot;c00045&quot;]" data-audio-id="1aa5ab0f03c0fbae"  title="生徒たちはそれぞれどの歴史人物のことを紹介しますか。">
+  <div class="hit" style='left:76.545px;top:227.660px;width:265.875px;height:16.500px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-010" data-char-ids="[&quot;c00046&quot;, &quot;c00047&quot;, &quot;c00048&quot;, &quot;c00049&quot;, &quot;c00050&quot;, &quot;c00051&quot;, &quot;c00052&quot;, &quot;c00053&quot;, &quot;c00054&quot;]" data-audio-id="fd6d17b4fe5a8d3b"  title="線で結びましょう。">
+  <div class="hit" style='left:335.895px;top:227.660px;width:96.300px;height:16.500px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-011" data-char-ids="[&quot;c00126&quot;, &quot;c00127&quot;, &quot;c00128&quot;, &quot;c00129&quot;, &quot;c00130&quot;, &quot;c00131&quot;, &quot;c00132&quot;, &quot;c00133&quot;, &quot;c00134&quot;, &quot;c00135&quot;, &quot;c00136&quot;, &quot;c00137&quot;, &quot;c00138&quot;, &quot;c00139&quot;, &quot;c00140&quot;, &quot;c00141&quot;, &quot;c00142&quot;, &quot;c00143&quot;, &quot;c00144&quot;, &quot;c00145&quot;, &quot;c00146&quot;, &quot;c00147&quot;, &quot;c00148&quot;, &quot;c00149&quot;, &quot;c00150&quot;, &quot;c00151&quot;, &quot;c00152&quot;, &quot;c00153&quot;, &quot;c00154&quot;]" data-audio-id="8d837ac80a7b32c9"  title="それぞれの歴史人物のできごとや功績をまとめて書きましょう。">
+  <div class="hit" style='left:76.549px;top:353.660px;width:310.500px;height:16.500px;'></div>
+</div><div class="point-hotspot sentence" data-target="h-012" data-char-ids="[&quot;c00161&quot;, &quot;c00162&quot;, &quot;c00163&quot;, &quot;c00164&quot;, &quot;c00165&quot;, &quot;c00166&quot;, &quot;c00167&quot;, &quot;c00168&quot;, &quot;c00169&quot;, &quot;c00170&quot;, &quot;c00171&quot;, &quot;c00172&quot;, &quot;c00173&quot;, &quot;c00174&quot;, &quot;c00175&quot;, &quot;c00176&quot;, &quot;c00177&quot;, &quot;c00178&quot;, &quot;c00179&quot;]" data-audio-id="cb359005e3965ae1"  title="録音を聞いて、役を決めて読みましょう。">
+  <div class="hit" style='left:80.486px;top:595.675px;width:205.500px;height:16.500px;'></div>
+</div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+    <aside id="point-panel">
+      <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="point-panel-content">点读列表</button>
+      <div id="point-panel-content" class="panel-content">
+        <h1>PDF 第 88 页</h1>
+        <p class="meta">优先标出完整日语句子；本页没有完整句时才标出日语词汇。中文说明和单独假名不生成点读热区。本页 12 个热区。</p>
+        <ol><li><button type="button" data-target="h-001" data-audio-id="c581c82a7e398d84"><b>句</b>そして、ふるさとへの思いを詩にしました。<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-002" data-audio-id="a83577aa2b7f6409" data-audio-src="audio/a83577aa2b7f6409.mp3"><b>句</b>そうですか。<span class="audio-badge source">可播放</span></button></li>
+<li><button type="button" data-target="h-003" data-audio-id="2cc29753b04b179c"><b>句</b>わたしは阿倍仲麻呂のことを知りたいです。<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-004" data-audio-id="0c4056aee705bacb" data-audio-src="audio/0c4056aee705bacb.mp3"><b>句</b>のポスターが楽しみです。<span class="audio-badge source">可播放</span></button></li>
+<li><button type="button" data-target="h-005" data-audio-id="181578dbfe900daa" data-audio-src="audio/181578dbfe900daa.mp3"><b>句</b>頑張って作ります。<span class="audio-badge source">可播放</span></button></li>
+<li><button type="button" data-target="h-006" data-audio-id="10da09779e62883d"><b>句</b>李さんは？<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-007" data-audio-id="b23c0f243f59d01c" data-audio-src="audio/b23c0f243f59d01c.mp3"><b>句</b>誰のことを紹介しますか。<span class="audio-badge source">可播放</span></button></li>
+<li><button type="button" data-target="h-008" data-audio-id="537573ddec348b61"><b>句</b>わたしは古代の医学者の李時珍のことを紹介したいです。<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-009" data-audio-id="1aa5ab0f03c0fbae"><b>句</b>生徒たちはそれぞれどの歴史人物のことを紹介しますか。<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-010" data-audio-id="fd6d17b4fe5a8d3b"><b>句</b>線で結びましょう。<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-011" data-audio-id="8d837ac80a7b32c9"><b>句</b>それぞれの歴史人物のできごとや功績をまとめて書きましょう。<span class="audio-badge pending">待补</span></button></li>
+<li><button type="button" data-target="h-012" data-audio-id="cb359005e3965ae1"><b>句</b>録音を聞いて、役を決めて読みましょう。<span class="audio-badge pending">待补</span></button></li></ol>
+      </div>
+    </aside>
+  </div>
+  <script>
+    const pageDrawingData = {"width":521.575,"height":737.00808,"background":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iNTIxLjU4IiBoZWlnaHQ9IjczNy4wMSIgdmlld0JveD0iMCAwIDUyMS41OCA3MzcuMDEiPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcF8xIj48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwtOC41MCw3NDUuNTEpIiBkPSJNMCAwSDUzOC41ODNWNzU0LjAxNkgwWiIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwXzIiPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLC0zMzQuNDksODU2LjA2KSIgZD0iTTAgMEg1OTUuMjhWODQxLjg5SDBaIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9ImNsaXBfMyI+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsLTMzNC40OSw4NTYuMDYpIiBkPSJNMCAwSDU5NS4yOFY4NDEuODlIMFoiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcF80Ij48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwtMzM0LjQ5LDg1Ni4wNikiIGQ9Ik0wIDg0MS44OUg1OTUuMjhWMEgwWiIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwXzUiPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLC0zMzQuNDksMTU2NC43MykiIGQ9Ik0wIDBINTk1LjI4Vjg0MS44OUgwWiIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwXzYiPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLC0zMzQuNDksMTU2NC43MykiIGQ9Ik0wIDBINTk1LjI4Vjg0MS44OUgwWiIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwXzciPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLC0zMzQuNDksMTU2NC43MykiIGQ9Ik0wIDg0MS44OUg1OTUuMjhWMEgwWiIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwXzEpIj48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw1MzUuNzEsNjg0LjcwKSIgZD0iTTAgMCAyLjE2IDQuMzA3SC0zNi43NjlMLTM0LjYxIDAtMzYuNzctNC40NjFIMi4xNjNaIiBmaWxsPSIjZThjMmRjIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsNTUxLjAzLDI1OS44NCkiIGQ9Ik0wIDBWMjAuMjIgNDMuNTIgNjMuNzQyTC0yOC43MCA2Ni4wMC01Ny44OSA1Ni45OFY0My41MjIgMjAuMjIgNi43NjJMLTI5LjE5LTIuMjYzWiIgZmlsbD0iI2U4YzJkYyIvPjwvZz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0NzMuNTMsMjA5Ljg5KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45OSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzYzZDk2IiBkPSJNMCAwSC00MDQuMzEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0NzUuNTIsMjA5Ljg5KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M2M2Q5NiIgZD0iTTAgMFYwTS00MDcuMjkgMFYwIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsODMuOTEsMzc5Ljg3KSIgZD0iTTAgMEg5MS4xMVYtMjhIMFpNOTEuMTEgMEgzOTIuMzFWLTI4SDkxLjExWiIgZmlsbD0iI2Y3ZTlmMiIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDM3OS44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDkwLjYxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQwNy44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwVjI3LjAxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDM3OS44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDMwMC43MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDQwNy44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDkwLjYxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQ0OS4xNykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwVjQxLjI5Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQwNy44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDMwMC43MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDQ0OS4xNykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDkwLjYxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQ5MC40NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwVjQxLjI5Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQ0OS4xNykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDMwMC43MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDQ5MC40NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDkwLjYxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDUzMS43NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwVjQxLjI5Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQ5MC40NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDMwMC43MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDUzMS43NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDkwLjYxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsODQuNDAsNTczLjA3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIGQ9Ik0wIDBIOTAuNjEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNTcyLjA4KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIGQ9Ik0wIDBWNDAuMzEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNTMxLjc3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIGQ9Ik0wIDBIMzAwLjcxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDU3My4wNykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBkPSJNMCAwSDMwMC43MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg2LjM3LDM3OS44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDEuOTciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M2M2Q5NiIgZD0iTTAgMEg4Ny42NiIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDM3OS44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNjNjNkOTYiIGQ9Ik0wIDBWME05MC42MSAwVjAiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNDA1Ljk0KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45MyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjI0LjExIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQwNy44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBWME0wIDI3LjAxVjI3LjAxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc3LjAwLDM3OS44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M2M2Q5NiIgZD0iTTAgMEgyOTcuNzQiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsMzc5Ljg3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M2M2Q5NiIgZD0iTTAgMFYwTTMwMC43MSAwVjAiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw4Ni4zNyw0MDcuODcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwxLjk3IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBIODcuNjYiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw4NC40MCw0MDcuODcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjBNOTAuNjEgMFYwIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQ0Ny4yMCkiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDEuOTciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMFYzOC4zNSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3NS4wMiw0NDkuMTcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjBNMCA0MS4yOVY0MS4yOSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3Ny4wMCw0MDcuODcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBIMjk3Ljc0Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDQwNy44NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBWME0zMDAuNzEgMFYwIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsODYuMzcsNDQ5LjE3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45NyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwSDg3LjY2Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsODQuNDAsNDQ5LjE3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMFYwTTkwLjYxIDBWMCIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3NS4wMiw0ODguNTApIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwxLjk3IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBWMzguMzUiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNDkwLjQ3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMFYwTTAgNDEuMjlWNDEuMjkiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzcuMDAsNDQ5LjE3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwSDI5Ny43NCIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3NS4wMiw0NDkuMTcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjBNMzAwLjcxIDBWMCIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg2LjM3LDQ5MC40NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDEuOTciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMEg4Ny42NiIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDg0LjQwLDQ5MC40NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBWME05MC42MSAwVjAiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNTI5LjgwKSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45NyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjM4LjM1Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDUzMS43NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBWME0wIDQxLjI5VjQxLjI5Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc3LjAwLDQ5MC40NykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMEgyOTcuNzQiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNDkwLjQ3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMFYwTTMwMC43MSAwVjAiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw4Ni4zNyw1MzEuNzcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwxLjk3IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBIODcuNjYiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw4NC40MCw1MzEuNzcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjBNOTAuNjEgMFYwIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsODYuMzcsNTczLjA3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45NyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzYzZDk2IiBkPSJNMCAwSDg3LjY2Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsODQuNDAsNTczLjA3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M2M2Q5NiIgZD0iTTAgMFYwTTkwLjYxIDBWMCIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3NS4wMiw1NzAuMDYpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwyLjAyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNkODhjYmMiIGQ9Ik0wIDBWMzcuMjkiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzUuMDIsNTcyLjA4KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q4OGNiYyIgZD0iTTAgMFYwTTAgNDAuMzFWNDAuMzEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNzcuMDAsNTMxLjc3KSIgc3Ryb2tlLXdpZHRoPSIuOTkyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjAsMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwSDI5Ny43NCIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3NS4wMiw1MzEuNzcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDg4Y2JjIiBkPSJNMCAwVjBNMzAwLjcxIDBWMCIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE3Ny4wMCw1NzMuMDcpIiBzdHJva2Utd2lkdGg9Ii45OTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNjNjNkOTYiIGQ9Ik0wIDBIMjk3Ljc0Ii8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTc1LjAyLDU3My4wNykiIHN0cm9rZS13aWR0aD0iLjk5MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIiBzdHJva2U9IiNjNjNkOTYiIGQ9Ik0wIDBWME0zMDAuNzEgMFYwIi8+PGc+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXBfMikiPjxnIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiIGlua3NjYXBlOmxhYmVsPSImI3g1NkZFOyYjeDVDNDI7IDEiPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwXzMpIj48ZyBjbGlwLXBhdGg9InVybCgjY2xpcF80KSI+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjMwLjczLDguNzYpIiBkPSJNMCAwIC4wMiAuMDktLjAxIC4yMy0uMjcgLjQxLS40OCAuNDItLjY5IC4zOS0uOTMgLjE3Qy0xLjAxIC4xMi0xLjA5IC4wNi0xLjE5IDAtMS4zMi0uMDYtMS42NS0uMjUtMS42OS0uMjdMLTEuODQtLjM1Qy0xLjg0LS4zNS0yLjExLS40OC0yLjMxLS41Ni0yLjU5LS42Ni0yLjc5LS42OS0yLjc5LS43M0wtMi43MS0uNzUtMi40My0uNzlILTIuMjdMLTIuMDMtLjc3LTEuOTYtLjc4LTEuNjktLjY5LTEuMzktLjU1Qy0xLjM5LS41NS0xLjU4LS43OS0xLjc2LTEuMDgtMS44OC0xLjI3LTIuMDItMS40OC0yLjA1LTEuNTFMLTIuMTctMS41Mi0yLjI5LTEuNDctMi4zMy0xLjQ4LTIuMzQtMS41Ni0yLjI2LTEuNjctMi4yMS0xLjc1LTIuMTctMS45NC0xLjkxLTIuMDQtMS41OS0xLjg5LTEuNDktMS43Ny0xLjMyLTEuNzItMS4yMS0xLjY5LS44NC0xLjU5LS44MS0xLjM0LS45Mi0xLjI3Qy0xLjAxLTEuMjUtMS4xMS0xLjI4LTEuMjItMS4yOEwtMS4yMy0xLjI0Qy0xLjIzLTEuMjQtLjk4LS44OS0uODYtLjc0LS43NC0uNTctLjQ5LS4yOS0uMzktLjIzTC0uMTktLjE0LS4wOS0uMTNaIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjI1LjA4LDEyLjE4KSIgZD0iTTAgMC0uMTUtLjE5LS4zMi0uNTktLjQ1LS44OC0uNzctMS41My0xLjAyLTEuOTctMS4zOS0yLjU3LTEuNTctMi43OC0xLjcxLTIuODQtMS43OS0yLjkyVi0zLjE1TC0xLjg0LTMuMzUtMS44NS0zLjU0Vi0zLjc2TC0xLjcyLTMuOTUtMS41My00LjAzQy0xLjUzLTQuMDMtMS4zOC00LjA4LTEuMjUtMy45NkwtLjk5LTMuNTYtLjU0LTMuMjMtLjQ0LTMuMTUtLjM1LTMuMDctLjIyLTIuOTItLjA5LTIuNzEtLjA0LTIuNTUgLjAyLTIuNDMgLjEyLTIuMjkgLjIxLTIuMDYgLjE2LTEuOTYgLjA3LTEuODktLjEyLTIuMTQtLjM4LTIuNDYtLjU0LTIuNTctLjYyLTIuNTYtLjQ5LTIuMjlDLS40OS0yLjI5LS4zMS0xLjkzLS4yNC0xLjY5LS4xNy0xLjQ3LS4xNS0xLjM2LS4xNC0xLjI5TC0uMTEtMS4wOC0uMDUtLjgyIC4wMy0uNDcgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjI2Ljc4LDEzLjIyKSIgZD0iTTAgMCAuMjQtLjEzIC4zOS0uMzIgLjQ1LS40MSAuNTgtLjMyIC43My0uMjIgLjc5LS4xNCAuNjggMCAuNTkgLjAzIC42MyAuMDcgLjg3IC4xMSAxLjE3IC4wMiAxLjI3LS4wNlYtLjA5TDEuMTgtLjIzQzEuMTgtLjIzIDEuMTEtLjM0IDEuMDEtLjQyIC45Mi0uNDkgLjc3LS42MyAuNzQtLjYzTC42NS0uNjcgLjk1LTEuMTYgMS4xMi0xLjM5IDEuMTktMS40OSAxLjI5LTEuNjUgMS44NS0yLjMyQzEuODUtMi4zMiAxLjg2LTEuNzUgMS44Ni0xLjU2IDEuODUtMS4xNiAxLjc4LS41OSAxLjc5LS41NUwxLjg0LS42MSAxLjg2LS43MiAxLjg5LS44MSAxLjk2LS44NyAyLS45NyAyLjA5LTEuMjUgMi4xMy0xLjI5IDIuMTctMS4zNFYtMS40MUwyLjE4LTEuNTUgMi4xOS0xLjc0IDIuMjEtMS45MiAyLjI4LTIuNTQgMi4zNC0yLjU4IDIuMzktMi42MyAyLjQ4LTIuNzIgMi41NC0yLjkxIDIuNTUtMy4xMyAyLjQ0LTMuMjggMi4yOS0zLjM1IDEuOTktMy4zOCAxLjg2LTMuMzMgMS42Ny0zLjE4IDEuNDktMi45N0MxLjQ5LTIuOTcgMS4zMi0yLjcyIDEuMjUtMi42MiAxLjE4LTIuNTIgMS4xOC0yLjQ4IDEuMTQtMi40MkwxLjAyLTIuMTVDMS4wMi0yLjE1IC45Ni0yLjA2IC44OS0xLjk1IC44NC0xLjg0IC44Ni0xLjg2IC44NS0xLjgzTC4zOS0uODkgLjM1LS43OUMuMzUtLjc5IC4xOC0uODggLjA4LS45Mi0uMDItLjk1LS4xNi0uOTktLjI0LTEuMDRMLS4zOS0xLjEzLS4yNi0uOTQtLjA4LS43NSAuMTUtLjU5IC4yNS0uNTMgLjA5LS4yNiAuMTEtLjIyIC4wOS0uMTkgLjA1LS4xMyAuMDMtLjA0IDAgMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI0OS4wNCwxMS4zMSkiIGQ9Ik0wIDBWLS4wMVoiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyNDguMzksMTIuNTcpIiBkPSJNMCAwVjBaIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjQ3LjIyLDcuNTMpIiBkPSJNMCAwSC4xOUwuNDYgLjAzIC43MiAuMDZDLjczIC4wMyAuNjEtLjYzIC41NS0uODUgLjQ5LTEuMDQgLjQzLTEuMjUgLjM5LTEuMzggLjM2LTEuNTEgLjI4LTEuNzkgLjI3LTEuODdWLTEuOTRDLjI5LTEuOTIgLjQ3LTEuMzkgLjY2LTEuMDhMLjc3LS44OSAuODItLjgyIC44OS0uNzEgMS4wOC0uNDggMS4xNi0uMzYgMS4yOS0uMjIgMS40MS0uMDUgMS41MyAuMTlDMS41NyAuMzEgMS41OSAuNDIgMS41OSAuNDJMMS42NSAuNDcgMS43NyAuNTYgMS45MSAuNjYgMi4wMyAuNzkgMS45NiAuOTkgMS44NiAxLjA4IDEuNzYgMS4xMUgxLjY3TDEuNjkgMS4wNFYuOTFMMS41OSAuODNDMS41OSAuODQgMS42MiAxLjA5IDEuMzcgMS4zOSAxLjIyIDEuNTcgMS4wNiAxLjY2IDEuMDYgMS42NkwuOTUgMS43MyAuODEgMS43OUguNjlMLjY3IDEuNzUgLjY4IDEuNjUgLjcyIDEuNDggLjczIDEuMzkgLjc3IDEuMTggLjc5IC44OSAuODEgLjY1Qy44MSAuNTkgLjgyIC41MiAuNzkgLjM4TC42MSAuMjZDLjYxIC4yNiAuNTEgLjIzIC4zNyAuMTcgLjE2IC4wOS0uMDUgLjA0LS4wOCAuMDJMMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjQ5LjA1LDE5LjUyKSIgZD0iTTAgMEMwLS4wOS0uMTQtLjMzLS4xOS0uMzktLjI5LS41Mi0uNDMtLjU2LS42Ni0uNTctLjg5LS41OC0uODctLjU2LS44OS0uNTVMLS45NC0uNDctLjc4LS4xOS0uNjItLjAxLS4yNiAuMzVDLS4yNiAuMzUgLjAxIC4xNiAwIDBNLTIuMzgtLjI3Qy0yLjU5LS41NC0yLjkyLS44My0yLjk3LS43NS0zLjA0LS42Mi0xLjk1IC4zOS0xLjk1IC4zOS0xLjk1IC4zOS0yLjE5LS4wMi0yLjM4LS4yN00xLjA2IDQuODRDMS4yMSA1LjEyIDEuMzkgNS40MiAxLjM5IDUuNDJMMS41NSA1LjYxQzEuNjIgNS42MiAxLjc1IDUuNDkgMS44OCA1LjM2IDIuMDIgNS4yMyAyLjEzIDUuMTUgMi4xNCA1LjA1TDEuOTcgNC44M0MxLjkxIDQuNzggMS42NSA0LjU1IDEuMzggNC4zOCAxLjA5IDQuMTkgLjY5IDMuOTUgLjY2IDMuOTRMLjMxIDMuNzFDLjMxIDMuNzEgLjgyIDQuMzkgMS4wNiA0Ljg0TS0xLjc2IC43NC0xLjc5IC42Ni0xLjg0IC41N0MtMS44NCAuNTctMi4yMyAuMjMtMi40MyAuMDQtMy0uNTEtMy4zNy0uOTMtMy4yOC0xLjA0LTMuMTktMS4xNi0yLjY2LS44NC0yLjE3LS4yNy0xLjgyIC4xMy0xLjQyIC43OS0xLjM5IC43OS0xLjM2IC44Mi0xLjA2IDEuMDctLjU3IDEuMzYtLjA5IDEuNjUgLjA5IDEuNzUgLjEzIDEuNzEgLjE3IDEuNjYtLjAzIDEuNDQtLjIzIDEuMTQtLjUxIC43Mi0uMzggLjQ5LS4zOCAuNDktLjM4IC40OS0uNzggLjE5LTEuMTMtLjE5LTEuMjctLjM2LTEuNDMtLjYxLTEuNDItLjY2LTEuNDItLjcxLTEuMzEtLjg5LS43NC0uODUtLjIzLS44MS0uMDktLjY4IDAtLjU3IC4xMS0uNDUgLjI3IC4xMiAuMjIgLjIzIC4xNiAuMzcgLjExIC4zOS0uMDQgLjU4LS4wNCAuNTggLjA4IC42OSAuMTggLjgyIC4yOSAuOTYgLjQ1IDEuMTggLjQzIDEuMThMLjEyIC44OS0uMDkgLjc0Qy0uMDkgLjc0LS4yMyAuOTEgLjAyIDEuMjIgLjE5IDEuNDUgLjUyIDEuNzUgLjQ2IDEuODkgLjM5IDIuMDQgLjA0IDEuODYtLjA3IDEuNzktLjE4IDEuNzUtLjQ5IDEuNTYtLjgyIDEuMzItMS4xMiAxLjA5LTEuMjMgLjk5LTEuMzMgLjkyLTEuMzMgLjkyLTEuMDMgMS4zNy0uNzMgMS44OC0uNDQgMi4zOCAuMTUgMy40NCAuMTUgMy40NCAuMTUgMy40NCAuOTYgMy45NCAxLjM1IDQuMTggMS43NSA0LjQyIDEuOTkgNC41NiAyLjQyIDQuODQgMi41NSA0LjkzIDIuNTkgNS4wMiAyLjU5IDUuMDkgMi42MiA1LjM1IDIuMjYgNS40NiAyLjE4IDUuNDkgMS45MyA1LjU5IDEuNzkgNS41OSAxLjY0IDUuNzhMMS43MSA1Ljg1VjUuOTZMMS42MSA2LjA5QzEuNTEgNi4xNiAxLjI5IDYuMTggMS4yNiA2LjE2TDEuMDMgNS45NiAuNzYgNS41NSAuNjggNS4zOSAuNDkgNS4wMiAuMzEgNC42OCAuMjIgNC41MSAuMTEgNC4yOS0uMDcgMy45OC0uMTkgMy43NS0uMjUgMy42NS0uMzkgMy40MS0uNDcgMy4yNi0uNTggMy4xOUMtLjU4IDMuMTktMS4wNCAyLjk2LTEuMjIgMi44N0wtMS40MSAyLjc3LTEuNzYgMi41N0MtMS43NiAyLjU3LTMuODIgMS4zNy00LjQ1IDEuMDctNC43NCAuOTMtNS4wOCAuNzktNS4xNSAuNzktNS4yMiAuNzgtNS4zMSAuNzUtNS40NSAuODEtNS41OSAuODgtNS41OSAuODgtNS42NCAuODlILTUuNzNMLTUuNzkgLjg3Vi44NUwtNS42NiAuNjktNS42NCAuNTQtNS41NiAuNDEtNS4zOSAuMjgtNS4yOSAuMjItNS4wNyAuMTdILTQuODlMLTQuNjYgLjIxLTQuNDUgLjI2LTQuMjEgLjM3LTQgLjQ5LTMuODUgLjU5LTMuNjEgLjc5LTMuNDcgLjg5LTMuMTYgMS4xNy0yLjk3IDEuMzQtMi43NiAxLjUxLTIuMzYgMS44M0MtMi4yOSAxLjg3LTEuNzMgMi4zMS0xLjU5IDIuNDEtMS40NiAyLjQ5LTEuMjQgMi42NS0xLjE5IDIuNjlMLS42NyAyLjk4LS42MiAyLjk3LS42NyAyLjg2LS43OSAyLjYxLTEuMDkgMi4wNS0xLjI0IDEuNzUtMS40MiAxLjQzWiIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI1NS44OCwxNC4wNikiIGQ9Ik0wIDBDLS40OS0uMDYtMS4yNy0uMjktMS40MS0uMzItMS41NC0uMzYtMS41Mi0uMzEtMS41Mi0uMzEtMS40NiAuMDUtMSAuNTMtLjg5IC42NS0uNzcgLjc4LS42NyAuODktLjY1IC45NUwtLjY2IDEuMDgtLjczIDEuMTYtLjc4IDEuMTgtLjg1IDEuMTktLjk5IDEuMTgtMS4wNiAxLjE1LTEuMTcgMS4wOS0xLjE2IDEuMDgtMSAxLjA3Qy0uOTYgMS4wNC0xLjAyIC45NC0xLjE5IC42OS0xLjQzIC4zNy0xLjcyLS4xNy0xLjc5LS4zOS0xLjg0LS41Mi0xLjc4LS41OS0xLjY3LS42Mi0xLjUyLS42NS0xLjI5LS40OS0uODgtLjM1LS40OC0uMTktLjE0LS4xNSAuMDQtLjE1IC4yMy0uMTUgLjQyLS4xNCAuNDctLjIzIC41Ny0uMzkgLjE2LS44Ni0uMTctMS4xNy0uNTEtMS40OS0uODItMS42Ni0uODItMS42NkwtLjkyLTEuNTItMS4wMi0xLjM5LTEuMTItMS4yNS0xLjI0LTEuMTQtMS4zMS0xLjExLTEuMjktMS4xN0MtMS4yOS0xLjE3LTEuMjUtMS4yNi0xLjIxLTEuMzctMS4xNy0xLjQ3LTEuMDgtMS44Mi0xLjA4LTEuODItMS4xNi0xLjg2LTEuODUtMi4xNy0yLjE0LTEuODItMi4yOS0xLjYzLTIuMTItMS4xOC0yLjA5LTEuMTRWLTEuMTFDLTIuNTMtMS41OS0yLjM2LTEuOTgtMi4xOS0yLjExLTIuMDEtMi4yNS0xLjgxLTIuMjctMS41OC0yLjI2LTEuMzEtMi4yNS0xLjAzLTIuMTMtMS4wMi0yLjEzTC0uOTctMi4yOUMtLjk2LTIuMzItLjk2LTIuMzktLjk4LTIuNDktLjk5LTIuNTgtMS4xMS0yLjY1LTEuMDktMi42OUwtLjk2LTIuNzctLjc1LTIuODUtLjcxLTIuODktLjYyLTIuOTItLjM1LTIuODFDLS4yOS0yLjc4LS4zMi0yLjcxLS4zMi0yLjU3LS4zMS0yLjMzLS41NS0xLjk3LS42My0xLjg5LS4zNi0xLjcyLS4xOC0xLjU1IC4wOC0xLjI5IC42My0uNzMgLjc1LS40NCAuNzgtLjIyIC43OS0uMDQgLjUzIC4wNiAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyNjguMjYsNi4wMSkiIGQ9Ik0wIDAtLjA4LS4wMyAuMDUtLjIzIC4yNS0uNTIgLjM2LS42NSAuMzktLjc3IC4xNi0xLjAxSC4yNUwuMjktLjk4IC4zMS0xLjAxIC40NS0uOTUgLjczLS44NEMuNzgtLjgyIC45OS0uNzYgLjk5LS42NyAuOTgtLjU3IC45OC0uNDkgLjg5LS40MkwuNzktLjI5IC42OS0uMjEgLjU1LS4xNiAuNDItLjExIC4yMy0uMDcgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjY3Ljg2LDguNTApIiBkPSJNMCAwIC4wNC0uMDQgLjE0LS4wOCAuMzMtLjE4IC40Mi0uMjIgLjU2LS4yNyAuNjUtLjMyIC42Ny0uMzYgLjMyLS44NyAuMDgtMS4xMy0uMTctMS4zNy0uODEtMS44Ni0uOTgtMS44OC0xLjI0LTIuMDgtMS4zMy0yLjIxVi0yLjM5TC0xLjM3LTIuNTQtMS4yNi0yLjY5LS45NC0yLjY1LS44My0yLjYxLS43NC0yLjUzLS41Ni0yLjM3LS4zNy0yLjI1Qy0uMzctMi4yNSAuMjEtMS44NSAuNDUtMS41OSAuNjktMS4zMyAuNzMtMS4yOSAuNzMtMS4yOUwuNzctMS4yMyAuODQtMS4xNCAuODktMS4wNFYtLjk5TC44Ni0uOTdILjgyTC43Ni0xLjAxIC42Ni0xLjEzIC41OS0xLjIzIC40OS0xLjMxIC40MS0xLjM5IC4yOC0xLjQ5IC4xOC0xLjU1IC4xNS0xLjU4IC4zNS0xLjM5IC40Ni0xLjI2IC41NS0xLjE4IC42Mi0xLjA5IC43OS0uOTMgMS4wMi0uNzMgMS4xOS0uNTggMS4yNi0uNTMgMS4zNy0uNDggMS40OC0uMzYgMS40Ny0uMjEgMS4zOS0uMTIgMS4yNS0uMDUgLjk5IDAgLjg5LS4wMSAuODEtLjA2IC40My0uMDMgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjcwLjEzLDEwLjA4KSIgZD0iTTAgMC0uMDEtLjA0Qy0uMDEtLjA3IC4wMS0uMTgtLjE4LS40MS0uNDEtLjY5LS42My0uODgtLjcyLS45N0wtMS4xMy0xLjM5LTEuMjUtMS41Ni0xLjMzLTEuNTktMi4wNi0xLjk3LTIuMjQtMi4wNi0yLjQ0LTIuMTctMi4zNy0yLjE4LTIuMzEtMi4xNS0yLjIyLTIuMTNILTIuMTFMLTIuMDktMi4xMi0xLjgxLTIuMDUtMS4wMy0xLjc0LS45My0xLjY2LS44OS0xLjY0LS40NC0xLjQxLS42My0xLjk5LS43OC0yLjY2LS44My0yLjk4Qy0uODMtMi45OC0uODUtMy4xNS0uODYtMy40NC0uODctMy43OC0uODYtNC4yNy0uOTQtNC4zM0wtMS4xOS00LjM2LTEuNTYtNC4zNC0xLjY3LTQuMzNWLTQuMzhMLTEuNjEtNC40Mi0xLjM0LTQuNTItMS4wNS00LjU1LS43Ny00Ljg2LS41OC00LjgyLS40OS00Ljc4Qy0uMjktNC43Ni0uMjMtNC44NC0uMTUtNC44MUwtLjA2LTQuNjEtLjA3LTQuNDUtLjA5LTQuMTNWLTMuOTRDLS4wOS0zLjk0LS4wOS0zLjY1LS4wOS0zLjIzLS4wOC0yLjgzIC4wNy0yLjM5IC4wNy0yLjM5TC4xOS0yLjExIC4yNy0xLjk3IC4zOS0xLjc3IC40NC0xLjYzQy4zOS0xLjU3IC4yOC0xLjM2IC4wOS0xLjIzLS4wOS0xLjA5LS4yMi0xLjAyLS4yNy0xLjA0TC0uMzktMS4xNy0uNTktMS4yNS0uODMtMS4zNC0uOTQtMS4zOS0xLjA5LTEuNDgtMS4xNS0xLjUxLTEuMDgtMS40My0uNjktMS4xM0MtLjY5LTEuMTMtLjM3LS44OC0uMjQtLjgyLS4xNC0uNzggLjA3LS43MyAuMTEtLjcyTC4yOC0uNjVDLjI5LS42MyAuMzUtLjU4IC4zNC0uNDggLjMzLS4yNCAuMjQtLjA5IC4xNC0uMDJMMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjY2LjMxLDE0LjQ5KSIgZD0iTTAgMEguMDlMLjEzIC4wNCAuMjIgLjA3SC4yNkMuMjYgLjA3IC42OS0uMDMgLjc5LS4wOSAuOTMtLjE1IDEuMDUtLjIzIC45OC0uMzUgLjkxLS40NiAuNzktLjYyIC42NS0uNjIgLjUxLS42MiAuNDUtLjQ5IC4zNi0uNDggLjI2LS40NiAuMjMtLjQ4IC4xOS0uNDlMLjA3LS42MyAuMTMtLjc5IC4zMS0uODlDLjIxLS44NiAuNDYtLjkyIC41Ni0uOTUgLjY4LS45NyAuOTMtLjk5IC45MS0xLjEyIC44OS0xLjI1IC44Ny0xLjI0IC44NS0xLjI5TC43NC0xLjM4IC42MS0xLjM5IC40OS0xLjM2IC4zNy0xLjM0IC4zNC0xLjI4IC4zOS0xLjIyQy4zOS0xLjIyIC4yMS0xLjA3IC4wNy0uOTJMLS4wMS0uNzFDLjAxLS41NCAuMTgtLjM0IC4xOC0uMjNMMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjY2LjE2LDE0Ljk1KSIgZD0iTTAgMEMtLjA2LS4wNi0uMzItLjY5LS40NS0xLjA3LS41Ni0xLjM4LS44OS0yLjI5LS45NS0yLjI5LTEuMDUtMi4yNy0xLjE3LTEuODYtMS4xOS0xLjg3LTEuMjMtMS44OC0xLjE4LTIuMTEtMS4yNC0yLjMyLTEuMjgtMi40Ni0xLjI5LTIuNDYtMS4yOS0yLjQ5TC0xLjMyLTIuNzhWLTIuOTFDLTEuMzEtMi45My0xLjI5LTIuOTgtMS4xOS0yLjk3LTEuMDktMi45Ny0xLjA4LTIuOTctMS4wNi0yLjk3TC0uODgtMi44OS0uNzItMi43NUMtLjcyLTIuNzUtLjQ5LTIuNTItLjM5LTIuMDMtLjMxLTEuNTQtLjI5LTEuNDUtLjI5LTEuMzhMLS4yMi0uODlDLS4xOS0uODItLjE1LS4zNSAuMDEtLjA2TDAgMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI4My4yOCwxNC4xMykiIGQ9Ik0wIDAtLjM2LS4yNlYtLjA1TC4xNCAuMjYgLjM4IC4zOUMuMjkgLjI5IC4wNSAuMDQgMCAwTTEuMTYgLjY1QzEuMTEgLjc1IDEuMDEgLjc4IDEgLjc4TC44MyAuODQgLjY3IC44MiAuNTcgLjc0IC40OSAuNjYtLjM3IC4wNEMtLjM3IC4wNC0uMzcgLjM2LS4zOSAuNDctLjQzIC42Ni0uNzcgLjg3LS44MiAxLjAxTC0uODYgMS4wMkMtLjg4IC45OC0uNjkgLjY5LS42OSAuNDEtLjY4IC4xNy0uNzQtLjIxLS43NC0uMjEtLjc0LS4yMS0xLjc5LS45OS0xLjk2LTEuMDhMLTEuODctLjUyLTEuOTgtLjI3LTIuMDYtLjMzLTIuMDctLjM5LTIuMTYtLjYyQy0yLjE2LS42Mi0yLjM1LTEuMTItMi40NC0xLjI1LTIuNTMtMS4zNy0yLjU1LTEuMzktMi41Ni0xLjQzTC0yLjU5LTEuODItMi4zOS0xLjk1LTIuMDEtMS41NC0xLjk2LTEuNDEtLjc4LS4zNy0uODEtLjY0LS44NS0uOTItLjk0LS45MS0xLjAyLS45M0MtMS4wMi0uOTMtLjg5LTEuMDQtLjg5LTEuMTlMLS45NC0xLjQ5Vi0xLjU2TC0uOTEtMS42NC0uODItMS42OC0uOTQtMS43OEMtLjk5LTEuODItMS4wOC0xLjg5LTEuMjYtMi4wMkwtMS41MS0yLjE3LTEuNTUtMi4xNUMtMS41NS0yLjE1LTEuNDktMS43Ny0xLjQ4LTEuNjMtMS40Ni0xLjQ2LTEuNDMtMS4yNi0xLjQ2LTEuMjYtMS40OS0xLjI2LTEuNTgtMS41Mi0xLjYyLTEuNjMtMS42Ni0xLjczLTEuNzMtMS44OS0xLjczLTEuODlMLTEuODctMi4xNi0yLjAzLTIuMzhWLTIuNTNMLTIuMDItMi45NEMtMS44NS0zLjAyLTEuNTctMi44NS0xLjUzLTIuNzFMLTEuMzgtMi42Mi0xLjE0LTIuNDdDLTEuMTQtMi40Ny0uODMtMi4yMi0uNzMtMi4xMkwtLjYzLTItLjUyLTEuODgtLjMyLTEuNjUtLjA1LTEuMzIgLjEyLTEuMDkgLjE5LS45MiAuMDktLjkzIC4wMi0xLjA0LS4yOS0xLjI5LS4zNS0xLjE1LS4zOC0uOTZDLS4zOC0uOTYtLjM5LS41Ni0uMzYtLjM1LS4zNi0uMzUtLjA1LS4xOSAuMTgtLjA3IC4zNyAuMDUgLjc2IC4yOSAuNzggLjI5TC44OCAuMzYgMS4wOCAuNDVDMS4wOCAuNDUgMS4yMiAuNTQgMS4xNiAuNjUiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyODMuNzksMTYuMDApIiBkPSJNMCAwVi0uMDVMLjA3LS4xMiAuMTItLjI3IC4xMy0uMzggLjE0LS41MiAuMTItLjY0LS4wMi0uNzUgMC0uODUgLjExLS45MyAuMTYtMS4wOCAuMzgtMS4yMSAuNjYtMS4xOUMuNjYtMS4xOSAuODMtMS4xMiAuODUtMS4wMyAuODktLjg5IC44NS0uNzUgLjg0LS43M0wuNzUtLjU5Qy43NS0uNTkgLjMxLS4wOSAuMjEtLjA1TDAgMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI5Ni4yNSw5LjIxKSIgZD0iTTAgMEMtLjAyLS4wMyAuMjYtLjI2IC4yMy0uNTEgLjE5LS42OSAuMDMtMS4zOS0uODktMi4yN0wtLjkzLTIuMzNDLS44OS0yLjM0LS4yNS0xLjc5LS4wNC0xLjU3IC4xOC0xLjM1IC42NS0xIC42OC0uNjggLjY5LS41MyAuNjgtLjE5IC4wNiAwSDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyOTQuMzMsMTMuODkpIiBkPSJNMCAwLS4wOS0uMTEtLjI2LS4yNi0uMjUtLjM0Qy0uMjUtLjM0IC4yNi0uMDUgLjQ0IC4wNSAuOTkgLjM4IDEuNDkgLjgxIDEuNzYgLjk2IDIuMDIgMS4xMSAyLjE1IDEuMTQgMi4xOSAxLjE1TDIuMzggMS4xNCAyLjM1IDEgMi4yOSAuOTJDMi4yOSAuOTIgMi4yMSAuNzggMS45OSAuNjggMS45NyAuNjcgMS4yOCAuMzYgMS4wMiAuMjEgLjc1IC4wNSAuNzIgLjA0IC42NyAuMDFMMC0uMzktLjA5LS40Ni0uMTUtLjQ5LS4yMi0uNTRDLS4yMi0uNTQtLjA2LTEuODgtLjI5LTIuNDEtLjQxLTIuNjYtLjQzLTIuNjctLjQ5LTIuNzZMLS42Ny0yLjk4LS45OS0zLjE2LTEuMjktMy4yMy0xLjM3LTMuMjItMS40NC0zLjI1LTEuNjItMy4yOC0xLjY5LTMuMjUtMS43Ny0zLjE3LTEuODItMy4xOC0xLjkyLTMuMTMtMi0yLjk5Vi0yLjk0TC0xLjgyLTMuMDFDLTEuNzMtMy4wMi0xLjM3LTMuMTEtMS4wNy0yLjU4LS43My0xLjk2LS41My0xLS41Mi0uNTVMLS41Ni0uNDgtLjUzLS40MUMtLjUzLS40MS0uNDkgLjE4LS41NCAxLS41NCAxLjA4LS40OSAxLjA5LS40OSAxLS40NyAuODktLjI5LS4xNC0uMjctLjE5TC0uMTEtLjA4IDAgMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDMwMC43NCwxMi4yMikiIGQ9Ik0wIDAtLjA5LS4wMy0uMTYtLjA3LS4yNy0uMDEtLjU2LS4xM0MtLjg0LS4zNS0xLjI2LS43Ni0xLjU4LS45Ni0xLjkyLTEuMTctMi4wMi0xLjI0LTIuNDctMS4zOUwtMi40NC0xLjQ0Qy0yLjM5LTEuNDMtMS43Ni0xLjIyLTEuNDUtMS4xMi0xLjE0LTEuMDEtMS4wOS0uOTgtMS4wOS0uOTgtMS4wOS0uOTgtMS4xOS0yLTEuNDMtMi4yNC0xLjQ3LTIuMjgtMS41OS0yLjMyLTEuNjgtMi4zMkwtMS43OC0yLjMxLTEuNzQtMi4zNy0xLjY5LTIuMzgtMS42Ny0yLjQ1LTEuNTgtMi41Mi0xLjQ3LTIuNTctMS40My0yLjYyLTEuNDItMi42Ny0xLjM4LTIuNzItMS4yNy0yLjc1LTEuMTUtMi43Ni0uODktMi43MkMtLjg5LTIuNzItMS44My0zLjkzLTEuOTEtMy44MS0xLjk4LTMuNzEtMS42My0zLjA5LTEuNjYtMy4wOC0xLjY4LTMuMDctMS45OC0zLjUxLTIuMTMtMy44NS0yLjE4LTMuOTUtMi4xOS00LjE4LTEuOTYtNC4wMS0xLjU5LTMuNzUtLjU3LTIuNjItLjE5LTIuMDcgLjAyLTEuNzYgLjc1LS44MSAuNzUtLjgxIC43NS0uODEgMS40NC0uNDMgMS43Ni0uMjkgMi4xNC0uMTMgMi42NCAuMDEgMi42OS0uMDkgMi43NC0uMjIgMi42OS0uNTYgMi41NC0uODcgMi4zOS0xLjE3IDIuMDYtMS42NSAxLjk3LTEuNjlMMS4yNi0xLjE1IDEuMzYtMS4yOUMxLjU2LTEuNTggMS43Mi0xLjgyIDEuNzQtMS45MyAxLjc0LTEuOTMgMS41Ni0yLjEyIDEuMDktMi4xOSAuNTItMi4yNyAuMzUtMi4wNiAuMzMtMi4wOEwuMzktMi4xNSAuNDktMi4yMiAuNTQtMi4yNCAuNTctMi4yNyAuNjgtMi4yOSAuNzMtMi4zNCAuNzgtMi4zNkguODhMLjk4LTIuMzlDLjk4LTIuMzkgMS4yOS0yLjQyIDEuODItMi4xN0wxLjkzLTIuNDEgMS45OS0yLjYxIDIuMDQtMi44MiAyLjA5LTIuOTkgMi4xMi0zLjA5IDIuMTctMy4yM0MyLjIxLTMuNDUgMi4zMy0zLjU4IDIuMzktMy42MUwyLjU4LTMuNjcgMi43OS0zLjYyIDIuOTMtMy42MSAzLjE2LTMuNTkgMy4yNi0zLjM5QzMuMjYtMy4zOSAzLjMyLTMuMDkgMi44OC0yLjU3IDIuNjctMi4zMyAyLjM0LTEuOTggMi4yNC0xLjg3IDIuMjQtMS44NyAzLjE0LS42OSAzLjAzLS4wNyAyLjk5IC4xOSAyLjQ2IC4xMSAyLjI3IC4wNiAxLjU4LS4xMyAuOTUtLjUzIC45NS0uNTMgLjk1LS41MyAxLjY0IC42NyAxLjk0IDEuMTcgMi4yNCAxLjY4IDIuNTkgMS45OCAyLjM1IDIuMjYgMi4wOSAyLjUzIDEuMjIgMS44NCAuOTYgMS42OSAuNzEgMS41NS0uMDkgMS4xNC0uMTUgMS4xNFYxLjA4Qy0uMTEgMS4wOCAuNjEgMS4wOSAuNzIgMS4xNEwuOTUgMS4wOEgxLjAzTDEuMjIgMS4xMyAxLjMxIDEuMTcgMS40NSAxLjM1QzEuNDYgMS4zNyAxLjg3IDEuOTkgMS45NyAxLjk2TDEuNzkgMS42MUMxLjI4IC43NiAuMjktLjk0IC4yOS0uOTRMLS40NC0xLjUxLS40MS0xLjUyIC4xNi0xLjE0Qy4xNi0xLjE0LS41MS0yLjIyLS43My0yLjQ3LS43My0yLjQ3LS42NC0xLjg2LS42OC0xLjc1LS43Mi0xLjYzLTEuMDktMS4yMi0xLjA0LS45Ny0xLjA0LS45Ny0uMTEtLjY0LS4wMi0uMjdMLS4wNC0uMjEgMC0uMTFWMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDMxOC4yMiw4LjAzKSIgZD0iTTAgMEMwIDAgMS4zOC0uMTggMS40OS0uMjMgMS42Mi0uMjkgMS45MS0uNDYgMS45MS0uNjYgMS45Mi0uODUgMS44Ny0xIDEuODItMS4wMkwxLjU5LTEuMDcgMS4yNS0xLjA5IDEuMTgtMS4wNUMxLjE2LTEuMDYgLjgyLTEuMTIgLjYxLTEuMjYgLjQ5LTEuMzQgLjI4LTEuMzkgLjI3LTEuMzhMLjUxLTEuMTlDLjYyLTEuMTEgLjg1LS44NSAuODItLjcxIC43OC0uNTMgLjU0LS40MSAuMzktLjI5IC4yMy0uMTUgLjAyLS4wMiAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwzMjIuNjUsMTAuNTkpIiBkPSJNMCAwQy0uMDggLjA1LS4xOSAuMDgtLjMyIC4wNy0uNDEgLjA3LS41MSAuMDEtLjY0LS4yMS0uNjQtLjIxLTEuNjYtLjc2LTIuMTMtMS4xMy0yLjQ5LTEuNDMtMy4yNS0yLjEyLTMuNTItMi4xOS0zLjc5LTIuMjgtMy45Mi0yLjI4LTMuOTQtMi4yNy00LjA0LTIuMjYtNC4wNC0yLjMyLTQuMDQtMi4zMkwtMy45OS0yLjM5Qy0zLjkyLTIuNDEtMy44MS0yLjQ3LTMuNjgtMi40OC0zLjU1LTIuNDktMy4zMS0yLjU2LTIuODctMi4zNS0yLjQ5LTIuMTctMi4yOS0yLjAzLTIuMTUtMS44OC0xLjk5LTEuNzMtMS42MS0xLjIxLTEuNTgtMS4xOC0xLjQ1LTEuMDUtMS4yNi0uODYtMS4yNi0uODZMLS43NS0uNTFDLS43Mi0uNTctMS42NC0yLjA0LTEuODktMi4zNy0yLjE1LTIuNjktMy41NS00LjYyLTQuMjktNC45OUwtNC40MS00Ljg1LTQuNDgtNC45NC00LjQ5LTUuMTYtNC4zMS01LjIyQy0zLjc3LTQuODgtMi40Mi0zLjUzLTIuMjUtMy4zNVYtMy40M0wtMi4yOC0zLjYzLTIuMzItMy42OEMtMi4zMy0zLjcyLTIuMzMtNC4zNS0yLjQ1LTQuMzktMi41Ny00LjQzLTIuNjctNC4yNi0yLjcxLTQuMjQtMi43NC00LjIyLTIuODItNC42OS0yLjc5LTQuODMtMi43Ny01LjA2LTIuNTctNS4yMS0yLjM3LTUuMTktMi4yNS01LjE4LTIuMTktNS4xNC0yLjE2LTUuMTJMLTIuMDUtNC45OC0yLjAxLTQuODFDLTIuMDEtNC44MS0xLjk4LTQuNjMtMS45OC00LjM5LTEuOTgtNC4xNy0yLjA3LTMuNTktMi4wNi0zLjUzTC0yLjA5LTMuNDlWLTMuNDRMLTIuMTItMy4zNS0yLjExLTMuMjktMi4xNS0zLjMxVi0zLjM1TC0yLjE3LTMuMzktMi4xOC0zLjM3Vi0zLjMxQy0yLjE4LTMuMzEtMS42OC0yLjg2LTEuNDItMi41OC0xLjE4LTIuMzEtLjQ0LTEuNDktLjAyLS43NCAuMDItLjY2IC4yNC0uNTggLjE4LS4yMyAuMTctLjE2IC4xMS0uMDYgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMzE5LjYwLDE2LjIyKSIgZD0iTTAgMCAuMDItLjU2IC4wNS0uNzUgLjE4LS45NkMuMjEtMS4wMyAuMTUtMS4yMSAuMzEtMS4yOCAuNDctMS4zNCAuNTktMS4zMSAuNjUtMS4yOUwuNzktMS4yNiAuOTEtMS4xMiAuOTctLjkzQy45Ny0uOTMgMS0uNzkgLjc5LS42MiAuNTctLjQ0IC4wNyAuMDMgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMzI4LjA5LDEyLjE5KSIgZD0iTTAgMCAuMTIgLjM0IC4zOSAuMzYgMCAwTS45OSAuNDlDLjkzIC42MSAuNjcgLjY3IC42MiAuNjhMLjIxIC41OEMuMjEgLjU4IC41NSAxLjI2IC41MyAxLjQyIC41MSAxLjU5IC40OSAxLjY2IC40OCAxLjY5TC4zOCAxLjgxIC4yNCAxLjkzIC4xNiAyIC4wNyAyLjA3LS4wNSAyLjE3LS4xNCAyLjI1LS4yNSAyLjMxLS4zMiAyLjM1LS40MSAyLjQyLS40NiAyLjQ3LS41MyAyLjUyLS42MSAyLjU4LS42NiAyLjU5Qy0uNjYgMi41OS0uODMgMi42NC0uOTcgMi41OUwtLjk0IDIuNDgtLjg5IDIuMzEtLjg1IDEuOTdWMS42OUMtLjg1IDEuNDUtMS4wNS0uNDQtMS4xNy0uNjEtMS4xNy0uNjEtMS45OC0xLjIxLTIuMzktMS4zOS0yLjc5LTEuNTctMy4wOC0xLjY0LTMuMDgtMS42OS0zLjA3LTEuNzMtMi41Ny0xLjcxLTIuMzktMS42Ny0yLjIyLTEuNjMtMS4zNy0xLjE5LTEuMjctMS4wOC0xLjI3LTEuMDgtMS4zMi0xLjQ5LTEuMzEtMS42NS0xLjI5LTEuODctMS4yMi0xLjk3LTEuMjEtMi4wMy0xLjE5LTIuMDktMS4xNS0yLjE5LS45OS0yLjA5LS44My0xLjk5LS43Ny0yLjAxLS43Ny0yLjAxLS43Ny0yLjAxLS40OS0xLjY5LS40NS0xLjU5LS40MS0xLjQ5LS4xNC0uNjQtLjEyLS40OC0uMTItLjQ4IC41My0uMDYgLjY4IC4wNCAuODMgLjE0IDEuMDggLjMyIC45OSAuNDkiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwzMjMuMjcsMTcuNTIpIiBkPSJNMCAwQy0uMDctLjA0IC4xMy0uMDUgLjI3LS4xNyAuMzYtLjI1IC43MS0uNDkgLjk3LS41OSAxLjI5LS43MSAyLjA1LS41OCAyLjQ2LS41NyAyLjk4LS41NSAzLjY5LS41NiAzLjc5LS41MyAzLjkxLS41MSA0LS40MSAzLjk2LS4yOUw0LjI4LS4xNUM0LjM0LS4wOSA0LjQxIC4xMiA0LjIxIC4yMSA0LjA4IC4yNyA0LjA1IC4yOCAzLjk4IC4zMkwzLjc1IC40NEMzLjY2IC40NCAzLjU2IC40NCAzLjQ0IC40MiAzLjMxIC40MSAyLjE3IC4yNiAxLjg5IC4yMyAxLjU5IC4xOSAxLjE5IC4xMiAuOTcgLjExIC43NCAuMDkgLjEzIC4wOCAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyMDcuODcsNS41MykiIGQ9Ik0wIDAtLjEzLS4xMy0uMTEtLjQ1IC4wMy0uNzUgLjAyLS45N0MuMDItLjk5LS4xOS0xLjQzLS40OS0xLjc5LTEuNDktMy4wNS0xLjc5LTMuNDgtMy4yOC00Ljg3LTQtNS41Ni01LjY2LTcuMDktNi45NC03Ljg3LTcuOTEtOC40Ni04Ljc3LTguODEtOC43Ny04LjgxTC04LjgyLTguODUtOC41Ny04LjgzQy04LjMzLTguODEtOC4wNS04LjcxLTcuOTEtOC42Ny02Ljk0LTguMzMtNi4zOS03Ljk0LTUuOTMtNy42NC00LjcxLTYuODQtNC40NC02LjU4LTMuNTktNS44OS0yLjc2LTUuMjItMS41NC00LjA5LTEuNTQtNC4wOUwtMS4wNi0zLjU5IC4wNy0yLjIyQy4wNy0yLjIyIC44NS0xLjM2IC44OS0xLjIzIC45My0xLjExIC45Mi0xLjAzIC44OC0uODQgLjg0LS42NSAuNjYtLjQ2IC42Ni0uNDZMLjI3LS4xMSAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyMDcuMTQsMTIuNjIpIiBkPSJNMCAwIC4wNC0uMDMgLjE2LS4xNyAuMjctLjMyIC41OS0uODIgMS4wOS0xLjQ5QzEuMDktMS40OSAxLjUzLTEuOTkgMS42OS0yLjE1IDIuMTMtMi41NyAyLjM0LTIuNjcgMi41My0yLjc2IDIuOTctMi45NiAzLjM3LTMuMDEgMy4zNy0zLjAxTDMuNTUtMi45OCAzLjgyLTMuMTIgMy44Ni0zLjE5QzMuODgtMy4yOSAzLjc3LTMuMzIgMy43Ny0zLjMyTDMuNDktMy4zOUMzLjQ5LTMuMzkgMi44OC0zLjM5IDIuNjktMy40NSAyLjU0LTMuNDkgMi4zMS0zLjU1IDIuMzEtMy41NSAyLjMxLTMuNTUgMi4xNS0zLjYxIDEuOTgtMy41OSAxLjY2LTMuNTkgMS40OS0zLjQ2IDEuNDktMy40NkwxLjMyLTMuMjhDMS4zMi0zLjI4IDEuMDktMi44MiAuOTMtMi40NiAuNzctMi4wOSAuMzctMS4zOSAuMjEtLjk3IC4wOS0uNjkgLjAzLS40MSAuMDQtLjM5TC4wMi0uMzItLjAxLS4yMyAwLS4yMSAuMDMtLjI0IC4wNi0uMjkgLjA4LS4zMVYtLjI1TC4xMi0uMjlILjE0TC4wNy0uMTcgLjA1LS4xMSAuMDEtLjA1IDAgMCIgZmlsbD0iIzJhNzI1MSIvPjwvZz48L2c+PC9nPjwvZz48L2c+PGc+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXBfNSkiPjxnIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiIGlua3NjYXBlOmxhYmVsPSImI3g1NkZFOyYjeDVDNDI7IDEiPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwXzYpIj48ZyBjbGlwLXBhdGg9InVybCgjY2xpcF83KSI+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjMwLjczLDcxNy40MikiIGQ9Ik0wIDAgLjAyIC4wOS0uMDEgLjIzLS4yNyAuNDEtLjQ4IC40Mi0uNjkgLjM5LS45MyAuMTdDLTEuMDEgLjEyLTEuMDkgLjA2LTEuMTkgMC0xLjMyLS4wNi0xLjY1LS4yNS0xLjY5LS4yN0wtMS44NC0uMzVDLTEuODQtLjM1LTIuMTEtLjQ4LTIuMzEtLjU2LTIuNTktLjY2LTIuNzktLjY5LTIuNzktLjczTC0yLjcxLS43NS0yLjQzLS43OUgtMi4yN0wtMi4wMy0uNzctMS45Ni0uNzgtMS42OS0uNjktMS4zOS0uNTVDLTEuMzktLjU1LTEuNTgtLjc5LTEuNzYtMS4wOC0xLjg4LTEuMjctMi4wMi0xLjQ4LTIuMDUtMS41MUwtMi4xNy0xLjUyLTIuMjktMS40Ny0yLjMzLTEuNDgtMi4zNC0xLjU2LTIuMjYtMS42Ny0yLjIxLTEuNzUtMi4xNy0xLjk0LTEuOTEtMi4wNC0xLjU5LTEuODktMS40OS0xLjc3LTEuMzItMS43Mi0xLjIxLTEuNjktLjg0LTEuNTktLjgxLTEuMzQtLjkyLTEuMjdDLTEuMDEtMS4yNS0xLjExLTEuMjgtMS4yMi0xLjI4TC0xLjIzLTEuMjRDLTEuMjMtMS4yNC0uOTgtLjg5LS44Ni0uNzQtLjc0LS41Ny0uNDktLjI5LS4zOS0uMjNMLS4xOS0uMTQtLjA5LS4xM1oiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyMjUuMDgsNzIwLjg0KSIgZD0iTTAgMC0uMTUtLjE5LS4zMi0uNTktLjQ1LS44OC0uNzctMS41My0xLjAyLTEuOTctMS4zOS0yLjU3LTEuNTctMi43OC0xLjcxLTIuODQtMS43OS0yLjkyVi0zLjE1TC0xLjg0LTMuMzUtMS44NS0zLjU0Vi0zLjc2TC0xLjcyLTMuOTUtMS41My00LjAzQy0xLjUzLTQuMDMtMS4zOC00LjA4LTEuMjUtMy45NkwtLjk5LTMuNTYtLjU0LTMuMjMtLjQ0LTMuMTUtLjM1LTMuMDctLjIyLTIuOTItLjA5LTIuNzEtLjA0LTIuNTUgLjAyLTIuNDMgLjEyLTIuMjkgLjIxLTIuMDYgLjE2LTEuOTYgLjA3LTEuODktLjEyLTIuMTQtLjM4LTIuNDYtLjU0LTIuNTctLjYyLTIuNTYtLjQ5LTIuMjlDLS40OS0yLjI5LS4zMS0xLjkzLS4yNC0xLjY5LS4xNy0xLjQ3LS4xNS0xLjM2LS4xNC0xLjI5TC0uMTEtMS4wOC0uMDUtLjgyIC4wMy0uNDcgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjI2Ljc4LDcyMS44OCkiIGQ9Ik0wIDAgLjI0LS4xMyAuMzktLjMyIC40NS0uNDEgLjU4LS4zMiAuNzMtLjIyIC43OS0uMTQgLjY4IDAgLjU5IC4wMyAuNjMgLjA3IC44NyAuMTEgMS4xNyAuMDIgMS4yNy0uMDZWLS4wOUwxLjE4LS4yM0MxLjE4LS4yMyAxLjExLS4zNCAxLjAxLS40MiAuOTItLjQ5IC43Ny0uNjMgLjc0LS42M0wuNjUtLjY3IC45NS0xLjE2IDEuMTItMS4zOSAxLjE5LTEuNDkgMS4yOS0xLjY1IDEuODUtMi4zMkMxLjg1LTIuMzIgMS44Ni0xLjc1IDEuODYtMS41NiAxLjg1LTEuMTYgMS43OC0uNTkgMS43OS0uNTVMMS44NC0uNjEgMS44Ni0uNzIgMS44OS0uODEgMS45Ni0uODcgMi0uOTcgMi4wOS0xLjI1IDIuMTMtMS4yOSAyLjE3LTEuMzRWLTEuNDFMMi4xOC0xLjU1IDIuMTktMS43NCAyLjIxLTEuOTIgMi4yOC0yLjU0IDIuMzQtMi41OCAyLjM5LTIuNjMgMi40OC0yLjcyIDIuNTQtMi45MSAyLjU1LTMuMTMgMi40NC0zLjI4IDIuMjktMy4zNSAxLjk5LTMuMzggMS44Ni0zLjMzIDEuNjctMy4xOCAxLjQ5LTIuOTdDMS40OS0yLjk3IDEuMzItMi43MiAxLjI1LTIuNjIgMS4xOC0yLjUyIDEuMTgtMi40OCAxLjE0LTIuNDJMMS4wMi0yLjE1QzEuMDItMi4xNSAuOTYtMi4wNiAuODktMS45NSAuODQtMS44NCAuODYtMS44NiAuODUtMS44M0wuMzktLjg5IC4zNS0uNzlDLjM1LS43OSAuMTgtLjg4IC4wOC0uOTItLjAyLS45NS0uMTYtLjk5LS4yNC0xLjA0TC0uMzktMS4xMy0uMjYtLjk0LS4wOC0uNzUgLjE1LS41OSAuMjUtLjUzIC4wOS0uMjYgLjExLS4yMiAuMDktLjE5IC4wNS0uMTMgLjAzLS4wNCAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyNDkuMDQsNzE5Ljk3KSIgZD0iTTAgMFYtLjAxWiIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI0OC4zOSw3MjEuMjMpIiBkPSJNMCAwVjBaIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjQ3LjIyLDcxNi4xOSkiIGQ9Ik0wIDBILjE5TC40NiAuMDMgLjcyIC4wNkMuNzMgLjAzIC42MS0uNjMgLjU1LS44NSAuNDktMS4wNCAuNDMtMS4yNSAuMzktMS4zOCAuMzYtMS41MSAuMjgtMS43OSAuMjctMS44N1YtMS45NEMuMjktMS45MiAuNDctMS4zOSAuNjYtMS4wOEwuNzctLjg5IC44Mi0uODIgLjg5LS43MSAxLjA4LS40OCAxLjE2LS4zNiAxLjI5LS4yMiAxLjQxLS4wNSAxLjUzIC4xOUMxLjU3IC4zMSAxLjU5IC40MiAxLjU5IC40MkwxLjY1IC40NyAxLjc3IC41NiAxLjkxIC42NiAyLjAzIC43OSAxLjk2IC45OSAxLjg2IDEuMDggMS43NiAxLjExSDEuNjdMMS42OSAxLjA0Vi45MUwxLjU5IC44M0MxLjU5IC44NCAxLjYyIDEuMDkgMS4zNyAxLjM5IDEuMjIgMS41NyAxLjA2IDEuNjYgMS4wNiAxLjY2TC45NSAxLjczIC44MSAxLjc5SC42OUwuNjcgMS43NSAuNjggMS42NSAuNzIgMS40OCAuNzMgMS4zOSAuNzcgMS4xOCAuNzkgLjg5IC44MSAuNjVDLjgxIC41OSAuODIgLjUyIC43OSAuMzhMLjYxIC4yNkMuNjEgLjI2IC41MSAuMjMgLjM3IC4xNyAuMTYgLjA5LS4wNSAuMDQtLjA4IC4wMkwwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyNDkuMDUsNzI4LjE4KSIgZD0iTTAgMEMwLS4wOS0uMTQtLjMzLS4xOS0uMzktLjI5LS41Mi0uNDMtLjU2LS42Ni0uNTctLjg5LS41OC0uODctLjU2LS44OS0uNTVMLS45NC0uNDctLjc4LS4xOS0uNjItLjAxLS4yNiAuMzVDLS4yNiAuMzUgLjAxIC4xNiAwIDBNLTIuMzgtLjI3Qy0yLjU5LS41NC0yLjkyLS44My0yLjk3LS43NS0zLjA0LS42Mi0xLjk1IC4zOS0xLjk1IC4zOS0xLjk1IC4zOS0yLjE5LS4wMi0yLjM4LS4yN00xLjA2IDQuODRDMS4yMSA1LjEyIDEuMzkgNS40MiAxLjM5IDUuNDJMMS41NSA1LjYxQzEuNjIgNS42MiAxLjc1IDUuNDkgMS44OCA1LjM2IDIuMDIgNS4yMyAyLjEzIDUuMTUgMi4xNCA1LjA1TDEuOTcgNC44M0MxLjkxIDQuNzggMS42NSA0LjU1IDEuMzggNC4zOCAxLjA5IDQuMTkgLjY5IDMuOTUgLjY2IDMuOTRMLjMxIDMuNzFDLjMxIDMuNzEgLjgyIDQuMzkgMS4wNiA0Ljg0TS0xLjc2IC43NC0xLjc5IC42Ni0xLjg0IC41N0MtMS44NCAuNTctMi4yMyAuMjMtMi40MyAuMDQtMy0uNTEtMy4zNy0uOTMtMy4yOC0xLjA0LTMuMTktMS4xNi0yLjY2LS44NC0yLjE3LS4yNy0xLjgyIC4xMy0xLjQyIC43OS0xLjM5IC43OS0xLjM2IC44Mi0xLjA2IDEuMDctLjU3IDEuMzYtLjA5IDEuNjUgLjA5IDEuNzUgLjEzIDEuNzEgLjE3IDEuNjYtLjAzIDEuNDQtLjIzIDEuMTQtLjUxIC43Mi0uMzggLjQ5LS4zOCAuNDktLjM4IC40OS0uNzggLjE5LTEuMTMtLjE5LTEuMjctLjM2LTEuNDMtLjYxLTEuNDItLjY2LTEuNDItLjcxLTEuMzEtLjg5LS43NC0uODUtLjIzLS44MS0uMDktLjY4IDAtLjU3IC4xMS0uNDUgLjI3IC4xMiAuMjIgLjIzIC4xNiAuMzcgLjExIC4zOS0uMDQgLjU4LS4wNCAuNTggLjA4IC42OSAuMTggLjgyIC4yOSAuOTYgLjQ1IDEuMTggLjQzIDEuMThMLjEyIC44OS0uMDkgLjc0Qy0uMDkgLjc0LS4yMyAuOTEgLjAyIDEuMjIgLjE5IDEuNDUgLjUyIDEuNzUgLjQ2IDEuODkgLjM5IDIuMDQgLjA0IDEuODYtLjA3IDEuNzktLjE4IDEuNzUtLjQ5IDEuNTYtLjgyIDEuMzItMS4xMiAxLjA5LTEuMjMgLjk5LTEuMzMgLjkyLTEuMzMgLjkyLTEuMDMgMS4zNy0uNzMgMS44OC0uNDQgMi4zOCAuMTUgMy40NCAuMTUgMy40NCAuMTUgMy40NCAuOTYgMy45NCAxLjM1IDQuMTggMS43NSA0LjQyIDEuOTkgNC41NiAyLjQyIDQuODQgMi41NSA0LjkzIDIuNTkgNS4wMiAyLjU5IDUuMDkgMi42MiA1LjM1IDIuMjYgNS40NiAyLjE4IDUuNDkgMS45MyA1LjU5IDEuNzkgNS41OSAxLjY0IDUuNzhMMS43MSA1Ljg1VjUuOTZMMS42MSA2LjA5QzEuNTEgNi4xNiAxLjI5IDYuMTggMS4yNiA2LjE2TDEuMDMgNS45NiAuNzYgNS41NSAuNjggNS4zOSAuNDkgNS4wMiAuMzEgNC42OCAuMjIgNC41MSAuMTEgNC4yOS0uMDcgMy45OC0uMTkgMy43NS0uMjUgMy42NS0uMzkgMy40MS0uNDcgMy4yNi0uNTggMy4xOUMtLjU4IDMuMTktMS4wNCAyLjk2LTEuMjIgMi44N0wtMS40MSAyLjc3LTEuNzYgMi41N0MtMS43NiAyLjU3LTMuODIgMS4zNy00LjQ1IDEuMDctNC43NCAuOTMtNS4wOCAuNzktNS4xNSAuNzktNS4yMiAuNzgtNS4zMSAuNzUtNS40NSAuODEtNS41OSAuODgtNS41OSAuODgtNS42NCAuODlILTUuNzNMLTUuNzkgLjg3Vi44NUwtNS42NiAuNjktNS42NCAuNTQtNS41NiAuNDEtNS4zOSAuMjgtNS4yOSAuMjItNS4wNyAuMTdILTQuODlMLTQuNjYgLjIxLTQuNDUgLjI2LTQuMjEgLjM3LTQgLjQ5LTMuODUgLjU5LTMuNjEgLjc5LTMuNDcgLjg5LTMuMTYgMS4xNy0yLjk3IDEuMzQtMi43NiAxLjUxLTIuMzYgMS44M0MtMi4yOSAxLjg3LTEuNzMgMi4zMS0xLjU5IDIuNDEtMS40NiAyLjQ5LTEuMjQgMi42NS0xLjE5IDIuNjlMLS42NyAyLjk4LS42MiAyLjk3LS42NyAyLjg2LS43OSAyLjYxLTEuMDkgMi4wNS0xLjI0IDEuNzUtMS40MiAxLjQzWiIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI1NS44OCw3MjIuNzIpIiBkPSJNMCAwQy0uNDktLjA2LTEuMjctLjI5LTEuNDEtLjMyLTEuNTQtLjM2LTEuNTItLjMxLTEuNTItLjMxLTEuNDYgLjA1LTEgLjUzLS44OSAuNjUtLjc3IC43OC0uNjcgLjg5LS42NSAuOTVMLS42NiAxLjA4LS43MyAxLjE2LS43OCAxLjE4LS44NSAxLjE5LS45OSAxLjE4LTEuMDYgMS4xNS0xLjE3IDEuMDktMS4xNiAxLjA4LTEgMS4wN0MtLjk2IDEuMDQtMS4wMiAuOTQtMS4xOSAuNjktMS40MyAuMzctMS43Mi0uMTctMS43OS0uMzktMS44NC0uNTItMS43OC0uNTktMS42Ny0uNjItMS41Mi0uNjUtMS4yOS0uNDktLjg4LS4zNS0uNDgtLjE5LS4xNC0uMTUgLjA0LS4xNSAuMjMtLjE1IC40Mi0uMTQgLjQ3LS4yMyAuNTctLjM5IC4xNi0uODYtLjE3LTEuMTctLjUxLTEuNDktLjgyLTEuNjYtLjgyLTEuNjZMLS45Mi0xLjUyLTEuMDItMS4zOS0xLjEyLTEuMjUtMS4yNC0xLjE0LTEuMzEtMS4xMS0xLjI5LTEuMTdDLTEuMjktMS4xNy0xLjI1LTEuMjYtMS4yMS0xLjM3LTEuMTctMS40Ny0xLjA4LTEuODItMS4wOC0xLjgyLTEuMTYtMS44Ni0xLjg1LTIuMTctMi4xNC0xLjgyLTIuMjktMS42My0yLjEyLTEuMTgtMi4wOS0xLjE0Vi0xLjExQy0yLjUzLTEuNTktMi4zNi0xLjk4LTIuMTktMi4xMS0yLjAxLTIuMjUtMS44MS0yLjI3LTEuNTgtMi4yNi0xLjMxLTIuMjUtMS4wMy0yLjEzLTEuMDItMi4xM0wtLjk3LTIuMjlDLS45Ni0yLjMyLS45Ni0yLjM5LS45OC0yLjQ5LS45OS0yLjU4LTEuMTEtMi42NS0xLjA5LTIuNjlMLS45Ni0yLjc3LS43NS0yLjg1LS43MS0yLjg5LS42Mi0yLjkyLS4zNS0yLjgxQy0uMjktMi43OC0uMzItMi43MS0uMzItMi41Ny0uMzEtMi4zMy0uNTUtMS45Ny0uNjMtMS44OS0uMzYtMS43Mi0uMTgtMS41NSAuMDgtMS4yOSAuNjMtLjczIC43NS0uNDQgLjc4LS4yMiAuNzktLjA0IC41MyAuMDYgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjY4LjI2LDcxNC42NykiIGQ9Ik0wIDAtLjA4LS4wMyAuMDUtLjIzIC4yNS0uNTIgLjM2LS42NSAuMzktLjc3IC4xNi0xLjAxSC4yNUwuMjktLjk4IC4zMS0xLjAxIC40NS0uOTUgLjczLS44NEMuNzgtLjgyIC45OS0uNzYgLjk5LS42NyAuOTgtLjU3IC45OC0uNDkgLjg5LS40MkwuNzktLjI5IC42OS0uMjEgLjU1LS4xNiAuNDItLjExIC4yMy0uMDcgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjY3Ljg2LDcxNy4xNikiIGQ9Ik0wIDAgLjA0LS4wNCAuMTQtLjA4IC4zMy0uMTggLjQyLS4yMiAuNTYtLjI3IC42NS0uMzIgLjY3LS4zNiAuMzItLjg3IC4wOC0xLjEzLS4xNy0xLjM3LS44MS0xLjg2LS45OC0xLjg4LTEuMjQtMi4wOC0xLjMzLTIuMjFWLTIuMzlMLTEuMzctMi41NC0xLjI2LTIuNjktLjk0LTIuNjUtLjgzLTIuNjEtLjc0LTIuNTMtLjU2LTIuMzctLjM3LTIuMjVDLS4zNy0yLjI1IC4yMS0xLjg1IC40NS0xLjU5IC42OS0xLjMzIC43My0xLjI5IC43My0xLjI5TC43Ny0xLjIzIC44NC0xLjE0IC44OS0xLjA0Vi0uOTlMLjg2LS45N0guODJMLjc2LTEuMDEgLjY2LTEuMTMgLjU5LTEuMjMgLjQ5LTEuMzEgLjQxLTEuMzkgLjI4LTEuNDkgLjE4LTEuNTUgLjE1LTEuNTggLjM1LTEuMzkgLjQ2LTEuMjYgLjU1LTEuMTggLjYyLTEuMDkgLjc5LS45MyAxLjAyLS43MyAxLjE5LS41OCAxLjI2LS41MyAxLjM3LS40OCAxLjQ4LS4zNiAxLjQ3LS4yMSAxLjM5LS4xMiAxLjI1LS4wNSAuOTkgMCAuODktLjAxIC44MS0uMDYgLjQzLS4wMyAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyNzAuMTMsNzE4Ljc0KSIgZD0iTTAgMC0uMDEtLjA0Qy0uMDEtLjA3IC4wMS0uMTgtLjE4LS40MS0uNDEtLjY5LS42My0uODgtLjcyLS45N0wtMS4xMy0xLjM5LTEuMjUtMS41Ni0xLjMzLTEuNTktMi4wNi0xLjk3LTIuMjQtMi4wNi0yLjQ0LTIuMTctMi4zNy0yLjE4LTIuMzEtMi4xNS0yLjIyLTIuMTNILTIuMTFMLTIuMDktMi4xMi0xLjgxLTIuMDUtMS4wMy0xLjc0LS45My0xLjY2LS44OS0xLjY0LS40NC0xLjQxLS42My0xLjk5LS43OC0yLjY2LS44My0yLjk4Qy0uODMtMi45OC0uODUtMy4xNS0uODYtMy40NC0uODctMy43OC0uODYtNC4yNy0uOTQtNC4zM0wtMS4xOS00LjM2LTEuNTYtNC4zNC0xLjY3LTQuMzNWLTQuMzhMLTEuNjEtNC40Mi0xLjM0LTQuNTItMS4wNS00LjU1LS43Ny00Ljg2LS41OC00LjgyLS40OS00Ljc4Qy0uMjktNC43Ni0uMjMtNC44NC0uMTUtNC44MUwtLjA2LTQuNjEtLjA3LTQuNDUtLjA5LTQuMTNWLTMuOTRDLS4wOS0zLjk0LS4wOS0zLjY1LS4wOS0zLjIzLS4wOC0yLjgzIC4wNy0yLjM5IC4wNy0yLjM5TC4xOS0yLjExIC4yNy0xLjk3IC4zOS0xLjc3IC40NC0xLjYzQy4zOS0xLjU3IC4yOC0xLjM2IC4wOS0xLjIzLS4wOS0xLjA5LS4yMi0xLjAyLS4yNy0xLjA0TC0uMzktMS4xNy0uNTktMS4yNS0uODMtMS4zNC0uOTQtMS4zOS0xLjA5LTEuNDgtMS4xNS0xLjUxLTEuMDgtMS40My0uNjktMS4xM0MtLjY5LTEuMTMtLjM3LS44OC0uMjQtLjgyLS4xNC0uNzggLjA3LS43MyAuMTEtLjcyTC4yOC0uNjVDLjI5LS42MyAuMzUtLjU4IC4zNC0uNDggLjMzLS4yNCAuMjQtLjA5IC4xNC0uMDJMMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjY2LjMxLDcyMy4xNSkiIGQ9Ik0wIDBILjA5TC4xMyAuMDQgLjIyIC4wN0guMjZDLjI2IC4wNyAuNjktLjAzIC43OS0uMDkgLjkzLS4xNSAxLjA1LS4yMyAuOTgtLjM1IC45MS0uNDYgLjc5LS42MiAuNjUtLjYyIC41MS0uNjIgLjQ1LS40OSAuMzYtLjQ4IC4yNi0uNDYgLjIzLS40OCAuMTktLjQ5TC4wNy0uNjMgLjEzLS43OSAuMzEtLjg5Qy4yMS0uODYgLjQ2LS45MiAuNTYtLjk1IC42OC0uOTcgLjkzLS45OSAuOTEtMS4xMiAuODktMS4yNSAuODctMS4yNCAuODUtMS4yOUwuNzQtMS4zOCAuNjEtMS4zOSAuNDktMS4zNiAuMzctMS4zNCAuMzQtMS4yOCAuMzktMS4yMkMuMzktMS4yMiAuMjEtMS4wNyAuMDctLjkyTC0uMDEtLjcxQy4wMS0uNTQgLjE4LS4zNCAuMTgtLjIzTDAgMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDI2Ni4xNiw3MjMuNjEpIiBkPSJNMCAwQy0uMDYtLjA2LS4zMi0uNjktLjQ1LTEuMDctLjU2LTEuMzgtLjg5LTIuMjktLjk1LTIuMjktMS4wNS0yLjI3LTEuMTctMS44Ni0xLjE5LTEuODctMS4yMy0xLjg4LTEuMTgtMi4xMS0xLjI0LTIuMzItMS4yOC0yLjQ2LTEuMjktMi40Ni0xLjI5LTIuNDlMLTEuMzItMi43OFYtMi45MUMtMS4zMS0yLjkzLTEuMjktMi45OC0xLjE5LTIuOTctMS4wOS0yLjk3LTEuMDgtMi45Ny0xLjA2LTIuOTdMLS44OC0yLjg5LS43Mi0yLjc1Qy0uNzItMi43NS0uNDktMi41Mi0uMzktMi4wMy0uMzEtMS41NC0uMjktMS40NS0uMjktMS4zOEwtLjIyLS44OUMtLjE5LS44Mi0uMTUtLjM1IC4wMS0uMDZMMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjgzLjI4LDcyMi43OSkiIGQ9Ik0wIDAtLjM2LS4yNlYtLjA1TC4xNCAuMjYgLjM4IC4zOUMuMjkgLjI5IC4wNSAuMDQgMCAwTTEuMTYgLjY1QzEuMTEgLjc1IDEuMDEgLjc4IDEgLjc4TC44MyAuODQgLjY3IC44MiAuNTcgLjc0IC40OSAuNjYtLjM3IC4wNEMtLjM3IC4wNC0uMzcgLjM2LS4zOSAuNDctLjQzIC42Ni0uNzcgLjg3LS44MiAxLjAxTC0uODYgMS4wMkMtLjg4IC45OC0uNjkgLjY5LS42OSAuNDEtLjY4IC4xNy0uNzQtLjIxLS43NC0uMjEtLjc0LS4yMS0xLjc5LS45OS0xLjk2LTEuMDhMLTEuODctLjUyLTEuOTgtLjI3LTIuMDYtLjMzLTIuMDctLjM5LTIuMTYtLjYyQy0yLjE2LS42Mi0yLjM1LTEuMTItMi40NC0xLjI1LTIuNTMtMS4zNy0yLjU1LTEuMzktMi41Ni0xLjQzTC0yLjU5LTEuODItMi4zOS0xLjk1LTIuMDEtMS41NC0xLjk2LTEuNDEtLjc4LS4zNy0uODEtLjY0LS44NS0uOTItLjk0LS45MS0xLjAyLS45M0MtMS4wMi0uOTMtLjg5LTEuMDQtLjg5LTEuMTlMLS45NC0xLjQ5Vi0xLjU2TC0uOTEtMS42NC0uODItMS42OC0uOTQtMS43OEMtLjk5LTEuODItMS4wOC0xLjg5LTEuMjYtMi4wMkwtMS41MS0yLjE3LTEuNTUtMi4xNUMtMS41NS0yLjE1LTEuNDktMS43Ny0xLjQ4LTEuNjMtMS40Ni0xLjQ2LTEuNDMtMS4yNi0xLjQ2LTEuMjYtMS40OS0xLjI2LTEuNTgtMS41Mi0xLjYyLTEuNjMtMS42Ni0xLjczLTEuNzMtMS44OS0xLjczLTEuODlMLTEuODctMi4xNi0yLjAzLTIuMzhWLTIuNTNMLTIuMDItMi45NEMtMS44NS0zLjAyLTEuNTctMi44NS0xLjUzLTIuNzFMLTEuMzgtMi42Mi0xLjE0LTIuNDdDLTEuMTQtMi40Ny0uODMtMi4yMi0uNzMtMi4xMkwtLjYzLTItLjUyLTEuODgtLjMyLTEuNjUtLjA1LTEuMzIgLjEyLTEuMDkgLjE5LS45MiAuMDktLjkzIC4wMi0xLjA0LS4yOS0xLjI5LS4zNS0xLjE1LS4zOC0uOTZDLS4zOC0uOTYtLjM5LS41Ni0uMzYtLjM1LS4zNi0uMzUtLjA1LS4xOSAuMTgtLjA3IC4zNyAuMDUgLjc2IC4yOSAuNzggLjI5TC44OCAuMzYgMS4wOCAuNDVDMS4wOCAuNDUgMS4yMiAuNTQgMS4xNiAuNjUiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyODMuNzksNzI0LjY2KSIgZD0iTTAgMFYtLjA1TC4wNy0uMTIgLjEyLS4yNyAuMTMtLjM4IC4xNC0uNTIgLjEyLS42NC0uMDItLjc1IDAtLjg1IC4xMS0uOTMgLjE2LTEuMDggLjM4LTEuMjEgLjY2LTEuMTlDLjY2LTEuMTkgLjgzLTEuMTIgLjg1LTEuMDMgLjg5LS44OSAuODUtLjc1IC44NC0uNzNMLjc1LS41OUMuNzUtLjU5IC4zMS0uMDkgLjIxLS4wNUwwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyOTYuMjUsNzE3Ljg3KSIgZD0iTTAgMEMtLjAyLS4wMyAuMjYtLjI2IC4yMy0uNTEgLjE5LS42OSAuMDMtMS4zOS0uODktMi4yN0wtLjkzLTIuMzNDLS44OS0yLjM0LS4yNS0xLjc5LS4wNC0xLjU3IC4xOC0xLjM1IC42NS0xIC42OC0uNjggLjY5LS41MyAuNjgtLjE5IC4wNiAwSDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwyOTQuMzMsNzIyLjU1KSIgZD0iTTAgMC0uMDktLjExLS4yNi0uMjYtLjI1LS4zNEMtLjI1LS4zNCAuMjYtLjA1IC40NCAuMDUgLjk5IC4zOCAxLjQ5IC44MSAxLjc2IC45NiAyLjAyIDEuMTEgMi4xNSAxLjE0IDIuMTkgMS4xNUwyLjM4IDEuMTQgMi4zNSAxIDIuMjkgLjkyQzIuMjkgLjkyIDIuMjEgLjc4IDEuOTkgLjY4IDEuOTcgLjY3IDEuMjggLjM2IDEuMDIgLjIxIC43NSAuMDUgLjcyIC4wNCAuNjcgLjAxTDAtLjM5LS4wOS0uNDYtLjE1LS40OS0uMjItLjU0Qy0uMjItLjU0LS4wNi0xLjg4LS4yOS0yLjQxLS40MS0yLjY2LS40My0yLjY3LS40OS0yLjc2TC0uNjctMi45OC0uOTktMy4xNi0xLjI5LTMuMjMtMS4zNy0zLjIyLTEuNDQtMy4yNS0xLjYyLTMuMjgtMS42OS0zLjI1LTEuNzctMy4xNy0xLjgyLTMuMTgtMS45Mi0zLjEzLTItMi45OVYtMi45NEwtMS44Mi0zLjAxQy0xLjczLTMuMDItMS4zNy0zLjExLTEuMDctMi41OC0uNzMtMS45Ni0uNTMtMS0uNTItLjU1TC0uNTYtLjQ4LS41My0uNDFDLS41My0uNDEtLjQ5IC4xOC0uNTQgMS0uNTQgMS4wOC0uNDkgMS4wOS0uNDkgMS0uNDcgLjg5LS4yOS0uMTQtLjI3LS4xOUwtLjExLS4wOCAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwzMDAuNzQsNzIwLjg4KSIgZD0iTTAgMC0uMDktLjAzLS4xNi0uMDctLjI3LS4wMS0uNTYtLjEzQy0uODQtLjM1LTEuMjYtLjc2LTEuNTgtLjk2LTEuOTItMS4xNy0yLjAyLTEuMjQtMi40Ny0xLjM5TC0yLjQ0LTEuNDRDLTIuMzktMS40My0xLjc2LTEuMjItMS40NS0xLjEyLTEuMTQtMS4wMS0xLjA5LS45OC0xLjA5LS45OC0xLjA5LS45OC0xLjE5LTItMS40My0yLjI0LTEuNDctMi4yOC0xLjU5LTIuMzItMS42OC0yLjMyTC0xLjc4LTIuMzEtMS43NC0yLjM3LTEuNjktMi4zOC0xLjY3LTIuNDUtMS41OC0yLjUyLTEuNDctMi41Ny0xLjQzLTIuNjItMS40Mi0yLjY3LTEuMzgtMi43Mi0xLjI3LTIuNzUtMS4xNS0yLjc2LS44OS0yLjcyQy0uODktMi43Mi0xLjgzLTMuOTMtMS45MS0zLjgxLTEuOTgtMy43MS0xLjYzLTMuMDktMS42Ni0zLjA4LTEuNjgtMy4wNy0xLjk4LTMuNTEtMi4xMy0zLjg1LTIuMTgtMy45NS0yLjE5LTQuMTgtMS45Ni00LjAxLTEuNTktMy43NS0uNTctMi42Mi0uMTktMi4wNyAuMDItMS43NiAuNzUtLjgxIC43NS0uODEgLjc1LS44MSAxLjQ0LS40MyAxLjc2LS4yOSAyLjE0LS4xMyAyLjY0IC4wMSAyLjY5LS4wOSAyLjc0LS4yMiAyLjY5LS41NiAyLjU0LS44NyAyLjM5LTEuMTcgMi4wNi0xLjY1IDEuOTctMS42OUwxLjI2LTEuMTUgMS4zNi0xLjI5QzEuNTYtMS41OCAxLjcyLTEuODIgMS43NC0xLjkzIDEuNzQtMS45MyAxLjU2LTIuMTIgMS4wOS0yLjE5IC41Mi0yLjI3IC4zNS0yLjA2IC4zMy0yLjA4TC4zOS0yLjE1IC40OS0yLjIyIC41NC0yLjI0IC41Ny0yLjI3IC42OC0yLjI5IC43My0yLjM0IC43OC0yLjM2SC44OEwuOTgtMi4zOUMuOTgtMi4zOSAxLjI5LTIuNDIgMS44Mi0yLjE3TDEuOTMtMi40MSAxLjk5LTIuNjEgMi4wNC0yLjgyIDIuMDktMi45OSAyLjEyLTMuMDkgMi4xNy0zLjIzQzIuMjEtMy40NSAyLjMzLTMuNTggMi4zOS0zLjYxTDIuNTgtMy42NyAyLjc5LTMuNjIgMi45My0zLjYxIDMuMTYtMy41OSAzLjI2LTMuMzlDMy4yNi0zLjM5IDMuMzItMy4wOSAyLjg4LTIuNTcgMi42Ny0yLjMzIDIuMzQtMS45OCAyLjI0LTEuODcgMi4yNC0xLjg3IDMuMTQtLjY5IDMuMDMtLjA3IDIuOTkgLjE5IDIuNDYgLjExIDIuMjcgLjA2IDEuNTgtLjEzIC45NS0uNTMgLjk1LS41MyAuOTUtLjUzIDEuNjQgLjY3IDEuOTQgMS4xNyAyLjI0IDEuNjggMi41OSAxLjk4IDIuMzUgMi4yNiAyLjA5IDIuNTMgMS4yMiAxLjg0IC45NiAxLjY5IC43MSAxLjU1LS4wOSAxLjE0LS4xNSAxLjE0VjEuMDhDLS4xMSAxLjA4IC42MSAxLjA5IC43MiAxLjE0TC45NSAxLjA4SDEuMDNMMS4yMiAxLjEzIDEuMzEgMS4xNyAxLjQ1IDEuMzVDMS40NiAxLjM3IDEuODcgMS45OSAxLjk3IDEuOTZMMS43OSAxLjYxQzEuMjggLjc2IC4yOS0uOTQgLjI5LS45NEwtLjQ0LTEuNTEtLjQxLTEuNTIgLjE2LTEuMTRDLjE2LTEuMTQtLjUxLTIuMjItLjczLTIuNDctLjczLTIuNDctLjY0LTEuODYtLjY4LTEuNzUtLjcyLTEuNjMtMS4wOS0xLjIyLTEuMDQtLjk3LTEuMDQtLjk3LS4xMS0uNjQtLjAyLS4yN0wtLjA0LS4yMSAwLS4xMVYwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMzE4LjIyLDcxNi42OSkiIGQ9Ik0wIDBDMCAwIDEuMzgtLjE4IDEuNDktLjIzIDEuNjItLjI5IDEuOTEtLjQ2IDEuOTEtLjY2IDEuOTItLjg1IDEuODctMSAxLjgyLTEuMDJMMS41OS0xLjA3IDEuMjUtMS4wOSAxLjE4LTEuMDVDMS4xNi0xLjA2IC44Mi0xLjEyIC42MS0xLjI2IC40OS0xLjM0IC4yOC0xLjM5IC4yNy0xLjM4TC41MS0xLjE5Qy42Mi0xLjExIC44NS0uODUgLjgyLS43MSAuNzgtLjUzIC41NC0uNDEgLjM5LS4yOSAuMjMtLjE1IC4wMi0uMDIgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMzIyLjY1LDcxOS4yNikiIGQ9Ik0wIDBDLS4wOCAuMDUtLjE5IC4wOC0uMzIgLjA3LS40MSAuMDctLjUxIC4wMS0uNjQtLjIxLS42NC0uMjEtMS42Ni0uNzYtMi4xMy0xLjEzLTIuNDktMS40My0zLjI1LTIuMTItMy41Mi0yLjE5LTMuNzktMi4yOC0zLjkyLTIuMjgtMy45NC0yLjI3LTQuMDQtMi4yNi00LjA0LTIuMzItNC4wNC0yLjMyTC0zLjk5LTIuMzlDLTMuOTItMi40MS0zLjgxLTIuNDctMy42OC0yLjQ4LTMuNTUtMi40OS0zLjMxLTIuNTYtMi44Ny0yLjM1LTIuNDktMi4xNy0yLjI5LTIuMDMtMi4xNS0xLjg4LTEuOTktMS43My0xLjYxLTEuMjEtMS41OC0xLjE4LTEuNDUtMS4wNS0xLjI2LS44Ni0xLjI2LS44NkwtLjc1LS41MUMtLjcyLS41Ny0xLjY0LTIuMDQtMS44OS0yLjM3LTIuMTUtMi42OS0zLjU1LTQuNjItNC4yOS00Ljk5TC00LjQxLTQuODUtNC40OC00Ljk0LTQuNDktNS4xNi00LjMxLTUuMjJDLTMuNzctNC44OC0yLjQyLTMuNTMtMi4yNS0zLjM1Vi0zLjQzTC0yLjI4LTMuNjMtMi4zMi0zLjY4Qy0yLjMzLTMuNzItMi4zMy00LjM1LTIuNDUtNC4zOS0yLjU3LTQuNDMtMi42Ny00LjI2LTIuNzEtNC4yNC0yLjc0LTQuMjItMi44Mi00LjY5LTIuNzktNC44My0yLjc3LTUuMDYtMi41Ny01LjIxLTIuMzctNS4xOS0yLjI1LTUuMTgtMi4xOS01LjE0LTIuMTYtNS4xMkwtMi4wNS00Ljk4LTIuMDEtNC44MUMtMi4wMS00LjgxLTEuOTgtNC42My0xLjk4LTQuMzktMS45OC00LjE3LTIuMDctMy41OS0yLjA2LTMuNTNMLTIuMDktMy40OVYtMy40NEwtMi4xMi0zLjM1LTIuMTEtMy4yOS0yLjE1LTMuMzFWLTMuMzVMLTIuMTctMy4zOS0yLjE4LTMuMzdWLTMuMzFDLTIuMTgtMy4zMS0xLjY4LTIuODYtMS40Mi0yLjU4LTEuMTgtMi4zMS0uNDQtMS40OS0uMDItLjc0IC4wMi0uNjYgLjI0LS41OCAuMTgtLjIzIC4xNy0uMTYgLjExLS4wNiAwIDAiIGZpbGw9IiMyYTcyNTEiLz48cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgyLDAsMCwtMiwzMTkuNjAsNzI0Ljg4KSIgZD0iTTAgMCAuMDItLjU2IC4wNS0uNzUgLjE4LS45NkMuMjEtMS4wMyAuMTUtMS4yMSAuMzEtMS4yOCAuNDctMS4zNCAuNTktMS4zMSAuNjUtMS4yOUwuNzktMS4yNiAuOTEtMS4xMiAuOTctLjkzQy45Ny0uOTMgMS0uNzkgLjc5LS42MiAuNTctLjQ0IC4wNyAuMDMgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMzI4LjA5LDcyMC44NSkiIGQ9Ik0wIDAgLjEyIC4zNCAuMzkgLjM2IDAgME0uOTkgLjQ5Qy45MyAuNjEgLjY3IC42NyAuNjIgLjY4TC4yMSAuNThDLjIxIC41OCAuNTUgMS4yNiAuNTMgMS40MiAuNTEgMS41OSAuNDkgMS42NiAuNDggMS42OUwuMzggMS44MSAuMjQgMS45MyAuMTYgMiAuMDcgMi4wNy0uMDUgMi4xNy0uMTQgMi4yNS0uMjUgMi4zMS0uMzIgMi4zNS0uNDEgMi40Mi0uNDYgMi40Ny0uNTMgMi41Mi0uNjEgMi41OC0uNjYgMi41OUMtLjY2IDIuNTktLjgzIDIuNjQtLjk3IDIuNTlMLS45NCAyLjQ4LS44OSAyLjMxLS44NSAxLjk3VjEuNjlDLS44NSAxLjQ1LTEuMDUtLjQ0LTEuMTctLjYxLTEuMTctLjYxLTEuOTgtMS4yMS0yLjM5LTEuMzktMi43OS0xLjU3LTMuMDgtMS42NC0zLjA4LTEuNjktMy4wNy0xLjczLTIuNTctMS43MS0yLjM5LTEuNjctMi4yMi0xLjYzLTEuMzctMS4xOS0xLjI3LTEuMDgtMS4yNy0xLjA4LTEuMzItMS40OS0xLjMxLTEuNjUtMS4yOS0xLjg3LTEuMjItMS45Ny0xLjIxLTIuMDMtMS4xOS0yLjA5LTEuMTUtMi4xOS0uOTktMi4wOS0uODMtMS45OS0uNzctMi4wMS0uNzctMi4wMS0uNzctMi4wMS0uNDktMS42OS0uNDUtMS41OS0uNDEtMS40OS0uMTQtLjY0LS4xMi0uNDgtLjEyLS40OCAuNTMtLjA2IC42OCAuMDQgLjgzIC4xNCAxLjA4IC4zMiAuOTkgLjQ5IiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMzIzLjI3LDcyNi4xOCkiIGQ9Ik0wIDBDLS4wNy0uMDQgLjEzLS4wNSAuMjctLjE3IC4zNi0uMjUgLjcxLS40OSAuOTctLjU5IDEuMjktLjcxIDIuMDUtLjU4IDIuNDYtLjU3IDIuOTgtLjU1IDMuNjktLjU2IDMuNzktLjUzIDMuOTEtLjUxIDQtLjQxIDMuOTYtLjI5TDQuMjgtLjE1QzQuMzQtLjA5IDQuNDEgLjEyIDQuMjEgLjIxIDQuMDggLjI3IDQuMDUgLjI4IDMuOTggLjMyTDMuNzUgLjQ0QzMuNjYgLjQ0IDMuNTYgLjQ0IDMuNDQgLjQyIDMuMzEgLjQxIDIuMTcgLjI2IDEuODkgLjIzIDEuNTkgLjE5IDEuMTkgLjEyIC45NyAuMTEgLjc0IC4wOSAuMTMgLjA4IDAgMCIgZmlsbD0iIzJhNzI1MSIvPjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDIsMCwwLC0yLDIwNy44Nyw3MTQuMTkpIiBkPSJNMCAwLS4xMy0uMTMtLjExLS40NSAuMDMtLjc1IC4wMi0uOTdDLjAyLS45OS0uMTktMS40My0uNDktMS43OS0xLjQ5LTMuMDUtMS43OS0zLjQ4LTMuMjgtNC44Ny00LTUuNTYtNS42Ni03LjA5LTYuOTQtNy44Ny03LjkxLTguNDYtOC43Ny04LjgxLTguNzctOC44MUwtOC44Mi04Ljg1LTguNTctOC44M0MtOC4zMy04LjgxLTguMDUtOC43MS03LjkxLTguNjctNi45NC04LjMzLTYuMzktNy45NC01LjkzLTcuNjQtNC43MS02Ljg0LTQuNDQtNi41OC0zLjU5LTUuODktMi43Ni01LjIyLTEuNTQtNC4wOS0xLjU0LTQuMDlMLTEuMDYtMy41OSAuMDctMi4yMkMuMDctMi4yMiAuODUtMS4zNiAuODktMS4yMyAuOTMtMS4xMSAuOTItMS4wMyAuODgtLjg0IC44NC0uNjUgLjY2LS40NiAuNjYtLjQ2TC4yNy0uMTEgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsMjA3LjE0LDcyMS4yOCkiIGQ9Ik0wIDAgLjA0LS4wMyAuMTYtLjE3IC4yNy0uMzIgLjU5LS44MiAxLjA5LTEuNDlDMS4wOS0xLjQ5IDEuNTMtMS45OSAxLjY5LTIuMTUgMi4xMy0yLjU3IDIuMzQtMi42NyAyLjUzLTIuNzYgMi45Ny0yLjk2IDMuMzctMy4wMSAzLjM3LTMuMDFMMy41NS0yLjk4IDMuODItMy4xMiAzLjg2LTMuMTlDMy44OC0zLjI5IDMuNzctMy4zMiAzLjc3LTMuMzJMMy40OS0zLjM5QzMuNDktMy4zOSAyLjg4LTMuMzkgMi42OS0zLjQ1IDIuNTQtMy40OSAyLjMxLTMuNTUgMi4zMS0zLjU1IDIuMzEtMy41NSAyLjE1LTMuNjEgMS45OC0zLjU5IDEuNjYtMy41OSAxLjQ5LTMuNDYgMS40OS0zLjQ2TDEuMzItMy4yOEMxLjMyLTMuMjggMS4wOS0yLjgyIC45My0yLjQ2IC43Ny0yLjA5IC4zNy0xLjM5IC4yMS0uOTcgLjA5LS42OSAuMDMtLjQxIC4wNC0uMzlMLjAyLS4zMi0uMDEtLjIzIDAtLjIxIC4wMy0uMjQgLjA2LS4yOSAuMDgtLjMxVi0uMjVMLjEyLS4yOUguMTRMLjA3LS4xNyAuMDUtLjExIC4wMS0uMDUgMCAwIiBmaWxsPSIjMmE3MjUxIi8+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PC9zdmc+"};
+    const pageScale = document.querySelector('.page-scale');
+    const pageNative = document.querySelector('#page-native');
+    const canvas = document.querySelector('#page-canvas');
+    const ctx = canvas.getContext('2d');
+    let drawGeneration = 0;
+
+    function rgba(color) {
+      if (!color) return '';
+      const [r, g, b, a] = color;
+      return `rgba(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)}, ${a})`;
+    }
+
+    function loadImage(src) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = reject;
+        image.src = src;
+      });
+    }
+
+    function syncNativeScale() {
+      const scale = pageScale.clientWidth / pageDrawingData.width;
+      pageNative.style.transform = `scale(${scale})`;
+      return scale;
+    }
+
+    async function drawPageCanvas() {
+      const generation = ++drawGeneration;
+      const displayScale = syncNativeScale();
+      const pixelScale = Math.max(1, (window.devicePixelRatio || 1) * displayScale);
+      canvas.width = Math.round(pageDrawingData.width * pixelScale);
+      canvas.height = Math.round(pageDrawingData.height * pixelScale);
+      ctx.setTransform(pixelScale, 0, 0, pixelScale, 0, 0);
+      ctx.clearRect(0, 0, pageDrawingData.width, pageDrawingData.height);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, pageDrawingData.width, pageDrawingData.height);
+      const image = await loadImage(pageDrawingData.background);
+      if (generation !== drawGeneration) return;
+      ctx.drawImage(image, 0, 0, pageDrawingData.width, pageDrawingData.height);
+    }
+
+    drawPageCanvas();
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(() => drawPageCanvas()).observe(pageScale);
+    } else {
+      window.addEventListener('resize', drawPageCanvas);
+    }
+
+    const groups = Array.from(document.querySelectorAll('.point-hotspot'));
+    const buttons = Array.from(document.querySelectorAll('button[data-target]'));
+    const tapeButtons = Array.from(document.querySelectorAll('.tape-btn'));
+    const panel = document.querySelector('#point-panel');
+    const panelToggle = document.querySelector('.panel-toggle');
+    const voiceSelect = document.querySelector('#voice-select');
+    const pointAudio = new Audio();
+    let activeChars = [];
+    const savedVoice = localStorage.getItem('pointreadVoice') || 'cloned-male';
+    if (voiceSelect && Array.from(voiceSelect.options).some((option) => option.value === savedVoice)) {
+      voiceSelect.value = savedVoice;
+    }
+
+    panelToggle.addEventListener('click', () => {
+      const open = !panel.classList.contains('open');
+      panel.classList.toggle('open', open);
+      panelToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    function setActive(id) {
+      const group = groups.find((item) => item.dataset.target === id);
+      const button = buttons.find((item) => item.dataset.target === id);
+      if (!group) return;
+      tapeButtons.forEach((b) => b.classList.remove('active'));
+      const alreadyActive = group.classList.contains('active');
+      groups.forEach((item) => item.classList.remove('active'));
+      buttons.forEach((item) => item.classList.remove('active'));
+      activeChars.forEach((item) => item.classList.remove('active'));
+      activeChars = [];
+      if (alreadyActive) return;
+      group.classList.add('active');
+      if (button) button.classList.add('active');
+      const charIds = JSON.parse(group.dataset.charIds || '[]');
+      activeChars = charIds.map((charId) => document.getElementById(charId)).filter(Boolean);
+      activeChars.forEach((item) => item.classList.add('active'));
+      playPointAudio(group);
+    }
+
+    function audioSrcFor(group, voice) {
+      if (!group) return '';
+      if (group.dataset.sourceSrc) return group.dataset.sourceSrc;
+      if (group.dataset.audioSrc) return group.dataset.audioSrc;
+      return '';
+    }
+
+    function setAudioSource(src) {
+      if (!src) return false;
+      const absoluteSrc = new URL(src, location.href).href;
+      if (pointAudio.src !== absoluteSrc) {
+        pointAudio.src = absoluteSrc;
+      }
+      return true;
+    }
+
+    function playPointAudio(group) {
+      if (!group) return;
+      const voice = voiceSelect ? voiceSelect.value : 'default';
+      const primarySrc = group.dataset.sourceSrc || '';
+      const fallbackSrc = group.dataset.audioSrc || '';
+      const activeSrc = primarySrc || fallbackSrc;
+      if (!activeSrc) return;
+      pointAudio.pause();
+      pointAudio.currentTime = 0;
+      pointAudio.onerror = () => {
+        if (activeSrc === primarySrc && fallbackSrc && setAudioSource(fallbackSrc)) {
+          pointAudio.onerror = null;
+          pointAudio.play().catch(() => {});
+        }
+      };
+      setAudioSource(activeSrc);
+      pointAudio.play().catch(() => {});
+    }
+
+    if (voiceSelect) {
+      voiceSelect.addEventListener('change', () => {
+        localStorage.setItem('pointreadVoice', voiceSelect.value);
+        const activeGroup = groups.find((item) => item.classList.contains('active'));
+        if (activeGroup) playPointAudio(activeGroup);
+      });
+    }
+
+    groups.forEach((group) => {
+      group.querySelectorAll('.hit').forEach((hit) => {
+        hit.addEventListener('click', () => setActive(group.dataset.target));
+      });
+    });
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => setActive(button.dataset.target));
+    });
+    tapeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const audioSrc = btn.dataset.audioSrc;
+        const isActive = btn.classList.contains('active');
+        tapeButtons.forEach((b) => b.classList.remove('active'));
+        groups.forEach((item) => item.classList.remove('active'));
+        buttons.forEach((item) => item.classList.remove('active'));
+        activeChars.forEach((item) => item.classList.remove('active'));
+        activeChars = [];
+        if (isActive) {
+          pointAudio.pause();
+        } else {
+          btn.classList.add('active');
+          pointAudio.pause();
+          pointAudio.currentTime = 0;
+          pointAudio.onerror = null;
+          setAudioSource(audioSrc);
+          pointAudio.play().catch(() => {});
+        }
+      });
+    });
+    pointAudio.addEventListener('ended', () => {
+      tapeButtons.forEach((b) => b.classList.remove('active'));
+    });
+    pointAudio.addEventListener('pause', () => {
+      tapeButtons.forEach((b) => b.classList.remove('active'));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' && true) location.href = "page-087.html";
+      if (event.key === 'ArrowRight' && true) location.href = "page-089.html";
+    });
+  </script>
+</body>
+</html>
