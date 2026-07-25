@@ -5,10 +5,10 @@
     "restrictByPage": true,
     "uniqueHotspotCount": 2754,
     "matched": 1174,
-    "manual": 0,
-    "matchedLowConfidence": 113,
-    "unmatched": 1467,
-    "slices": 1174
+    "manual": 4,
+    "matchedLowConfidence": 110,
+    "unmatched": 1466,
+    "slices": 1178
   },
   "items": [
     {
@@ -7211,7 +7211,18 @@
       "kind": "sentence",
       "displayText": "みなさん、こんにちは。",
       "audioText": "みなさん、こんにちは。",
-      "status": "unmatched"
+      "status": "manual",
+      "match": {
+        "track": "manual",
+        "audio": "assets/audio/textbooks/grade-8/03-第一单元 第3课.mp3",
+        "start": 59.0,
+        "end": 62.5,
+        "score": 100,
+        "method": "manual",
+        "matchedText": "みなさん、こんにちは。",
+        "reason": "ASR missed short greeting between speaker handoff"
+      },
+      "slice": "grade-8-pointread/_build/source_audio_slices/c8e0aa5e5e3d4b60.mp3"
     },
     {
       "audioId": "bf0947a186b78b33",
@@ -7240,17 +7251,18 @@
       "kind": "sentence",
       "displayText": "文化系は、茶道部や華道部、合唱部などがあります。",
       "audioText": "文化系は、茶道部や華道部、合唱部などがあります。",
-      "status": "matched_low_confidence",
+      "status": "manual",
       "match": {
-        "track": "vosk-model-ja-0.22-grade-8-03-第一单元 第3课",
+        "track": "manual",
         "audio": "assets/audio/textbooks/grade-8/03-第一单元 第3课.mp3",
         "start": 78.15,
         "end": 81.42,
-        "score": 78.95,
-        "method": "fuzzy",
-        "matchedText": "茶道部や可動部合唱部などがあります",
-        "queryType": "display"
-      }
+        "score": 100,
+        "method": "manual",
+        "matchedText": "文化系は、茶道部や華道部、合唱部などがあります。",
+        "reason": "Low confidence: ASR misheard 華道部 as 可動部"
+      },
+      "slice": "grade-8-pointread/_build/source_audio_slices/458eedaf697c1239.mp3"
     },
     {
       "audioId": "e64b64fd1c2dd611",
@@ -7259,17 +7271,18 @@
       "kind": "sentence",
       "displayText": "特に、野球部と茶道部がたいへん人気があります。",
       "audioText": "特に、野球部と茶道部がたいへん人気があります。",
-      "status": "matched_low_confidence",
+      "status": "manual",
       "match": {
-        "track": "vosk-model-ja-0.22-grade-8-03-第一单元 第3课",
+        "track": "manual",
         "audio": "assets/audio/textbooks/grade-8/03-第一单元 第3课.mp3",
         "start": 82.56,
-        "end": 87.58,
-        "score": 80.95,
-        "method": "fuzzy",
-        "matchedText": "特に野球部と茶道部が大変人気がありますみん",
-        "queryType": "display"
-      }
+        "end": 87.0,
+        "score": 100,
+        "method": "manual",
+        "matchedText": "特に、野球部と茶道部がたいへん人気があります。",
+        "reason": "Low confidence: ASR transcribed たいへん as 大変"
+      },
+      "slice": "grade-8-pointread/_build/source_audio_slices/e64b64fd1c2dd611.mp3"
     },
     {
       "audioId": "7dcb95efb986a7f1",
@@ -7398,17 +7411,18 @@
       "kind": "sentence",
       "displayText": "李悠然さん、お願いします。",
       "audioText": "李悠然さん、お願いします。",
-      "status": "matched_low_confidence",
+      "status": "manual",
       "match": {
-        "track": "vosk-model-ja-0.22-grade-8-03-第一单元 第3课",
+        "track": "manual",
         "audio": "assets/audio/textbooks/grade-8/03-第一单元 第3课.mp3",
-        "start": 57.015,
-        "end": 58.56,
-        "score": 80.0,
-        "method": "fuzzy",
-        "matchedText": "紀さんお願いします",
-        "queryType": "display"
-      }
+        "start": 113.0,
+        "end": 115.5,
+        "score": 100,
+        "method": "manual",
+        "matchedText": "李悠然さん、お願いします。",
+        "reason": "ASR wrongly matched 中村真紀さん instead; correct range is before どうぞ"
+      },
+      "slice": "grade-8-pointread/_build/source_audio_slices/79a6251eca9e204b.mp3"
     },
     {
       "audioId": "c0c2c2722aac7db2",
